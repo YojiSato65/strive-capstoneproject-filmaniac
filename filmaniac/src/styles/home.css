@@ -1,0 +1,16 @@
+.jumbotron {
+  background-color: #343a40 !important;
+  height: 50vh;
+  color: white;
+}
+
+.jumbotron input {
+  height: 4em;
+  width: 20em;
+}
+
+.jumbotron button {
+  width: 5em;
+  font-size: 2em;
+  color: white;
+}
