@@ -1,24 +1,33 @@
-import { Button, Navbar } from 'react-bootstrap'
+import { Button, Navbar, NavDropdown, Image } from 'react-bootstrap'
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import '../styles/mynavbar.css'
 
 const MyNavbar = () => {
   return (
-    <Navbar bg="dark" className="justify-content-between">
+    <Navbar bg="dark" className="justify-content-between px-3 py-3">
       <div>
         <Navbar.Brand href="#home">
-          <img
-            src="/logo.svg"
-            width="30"
-            height="30"
+          <Image
+            src={require('../assets/Filmaniac.png')}
+            width="150"
+            height="50"
             className="d-inline-block align-top"
-            alt="React Bootstrap logo"
+            alt="Logo"
           />
         </Navbar.Brand>
+        <NavDropdown
+          title="Genre"
+          id="basic-nav-dropdown"
+          className="d-inline-block"
+        >
+          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
+        </NavDropdown>
       </div>
       <div>
         <MdOutlineAccountCircle className="acount-icon mr-3" />
-        <Button variant="danger">Log out</Button>
+        <Button variant="warning">Log out</Button>
       </div>
     </Navbar>
   )

@@ -1,8 +1,11 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Jumbotron, Button, Form } from 'react-bootstrap'
 import '../styles/home.css'
+import MovieGallery from './MovieGallery'
 
 const Home = () => {
+  const [plot, setPlot] = useState('')
+
   useEffect(() => {
     getMovies()
   }, [])
@@ -15,6 +18,7 @@ const Home = () => {
       if (response.ok) {
         const data = await response.json()
         console.log(data)
+        setPlot(data)
       }
     } catch (error) {
       console.log(error)
@@ -23,25 +27,27 @@ const Home = () => {
 
   return (
     <>
-      <Jumbotron className="text-center d-flex flex-column justify-content-center">
-        <h1>Hello, world!</h1>
+      <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0">
+        <h1>Unlimited movies, for movie lovers.</h1>
 
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
+        <h3>
+          Find your favorite directors, actors and actresses of your taste.
+        </h3>
 
-        <Form className="d-flex justify-content-center">
+        <Form className="d-flex justify-content-center mt-3">
           <Form.Group className="mb-0">
             <Form.Control
               type="text"
               placeholder="Movie, director, actor/actress.."
             />
           </Form.Group>
-          <Button variant="warning type='submit">Search</Button>
+          <Button variant="warning type='submit ">Search</Button>
         </Form>
       </Jumbotron>
-      <div></div>
+      <div className="mx-3">
+        <MovieGallery />
+        <p>{plot.Plot}</p>
+      </div>
     </>
   )
 }
