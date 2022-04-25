@@ -8,8 +8,6 @@ const Home = () => {
   const [movieRow2, setMovieRow2] = useState([])
   const [movieRow3, setMovieRow3] = useState([])
 
-  const OMDB_URL = 'https://www.omdbapi.com/?apikey=fc9ce628'
-
   useEffect(() => {
     // const getMovies = async () => {
     //   try {
@@ -28,6 +26,8 @@ const Home = () => {
   }, [])
 
   const getMovies = () => {
+    const OMDB_URL = 'https://www.omdbapi.com/?apikey=fc9ce628'
+
     Promise.all([
       fetch(OMDB_URL + '&s=taxi')
         .then((response) => response.json())
