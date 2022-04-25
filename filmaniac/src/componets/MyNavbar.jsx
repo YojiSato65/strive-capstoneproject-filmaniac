@@ -1,11 +1,11 @@
-import { Button, Navbar, NavDropdown, Image } from 'react-bootstrap'
+import { Button, Navbar, NavDropdown, Image, Nav } from 'react-bootstrap'
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import '../styles/mynavbar.css'
 
 const MyNavbar = () => {
   return (
     <Navbar bg="dark" className="justify-content-between px-3 py-3">
-      <div>
+      <div className="d-flex">
         <Navbar.Brand href="#home">
           <Image
             src={require('../assets/Filmaniac.png')}
@@ -15,15 +15,21 @@ const MyNavbar = () => {
             alt="Logo"
           />
         </Navbar.Brand>
-        <NavDropdown
-          title="Genre"
-          id="basic-nav-dropdown"
-          className="d-inline-block"
-        >
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
-        </NavDropdown>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav>
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Library</Nav.Link>
+            <NavDropdown
+              title="Genre"
+              id="basic-nav-dropdown"
+              className="d-inline-block"
+            >
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
       </div>
       <div>
         <MdOutlineAccountCircle className="acount-icon mr-3" />

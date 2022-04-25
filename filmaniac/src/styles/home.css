@@ -2,7 +2,9 @@
   /* background-color: #343a40 !important; */
   height: 50vh;
   color: white;
-  background-image: src('../assets/bg-image.jpg');
+  background-image: url('../assets/bg-image.jpg');
+  background-position-y: 574px;
+  background-size: cover;
 }
 
 .jumbotron input {
