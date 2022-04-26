@@ -9,19 +9,6 @@ const Home = () => {
   const [movieRow3, setMovieRow3] = useState([])
 
   useEffect(() => {
-    // const getMovies = async () => {
-    //   try {
-    //     const response = await fetch(OMDB_URL + '&s=taxi')
-    //     if (response.ok) {
-    //       const data = await response.json()
-    //       console.log(data.Search)
-    //       setMovieRow1(data.Search)
-    //     }
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-
     getMovies()
   }, [])
 
@@ -36,14 +23,14 @@ const Home = () => {
             setMovieRow1(responseObject.Search)
           }
         }),
-      fetch(OMDB_URL + '&s=trip')
+      fetch(OMDB_URL + '&s=travel')
         .then((response) => response.json())
         .then((responseObject) => {
           if (responseObject.Response === 'True') {
             setMovieRow2(responseObject.Search)
           }
         }),
-      fetch(OMDB_URL + '&s=food')
+      fetch(OMDB_URL + '&s=nature')
         .then((response) => response.json())
         .then((responseObject) => {
           if (responseObject.Response === 'True') {
@@ -56,7 +43,7 @@ const Home = () => {
   return (
     <>
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0">
-        <h1>For film lovers.</h1>
+        <h1 className="mb-3">For film lovers.</h1>
 
         <h3>Find directors, actors and actresses of your taste.</h3>
 
@@ -72,7 +59,7 @@ const Home = () => {
       </Jumbotron>
       <MovieRow title="Taxi movies" movies={movieRow1.slice(0, 6)} />
       <MovieRow title="Travel movies" movies={movieRow2.slice(0, 6)} />
-      <MovieRow title="Food movies" movies={movieRow3.slice(0, 6)} />
+      <MovieRow title="Nature movies" movies={movieRow3.slice(0, 6)} />
     </>
   )
 }

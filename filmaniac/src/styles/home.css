@@ -7,6 +7,10 @@
   background-size: cover;
 }
 
+.jumbotron h1 {
+  font-size: 4em;
+}
+
 .jumbotron input {
   height: 4em;
   width: 20em;

@@ -4,13 +4,13 @@ import '../styles/mynavbar.css'
 
 const MyNavbar = () => {
   return (
-    <Navbar bg="dark" className="justify-content-between px-3 py-3">
+    <Navbar bg="dark" className="justify-content-between px-5 py-3">
       <div className="d-flex">
         <Navbar.Brand href="#home">
           <Image
             src={require('../assets/Filmaniac.png')}
-            width="150"
-            height="50"
+            width="100"
+            height="35"
             className="d-inline-block align-top"
             alt="Logo"
           />
@@ -27,6 +27,9 @@ const MyNavbar = () => {
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Sci-Fi</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Drama</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
