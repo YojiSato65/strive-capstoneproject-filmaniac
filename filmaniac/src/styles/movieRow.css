@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.movie-col img {
+  transition: transform 0.2s;
+}
+
 .movie-col img:hover {
   transform: scale(1.1);
 }

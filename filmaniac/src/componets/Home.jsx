@@ -13,29 +13,24 @@ const Home = () => {
   }, [])
 
   const getMovies = () => {
-    const OMDB_URL = 'https://www.omdbapi.com/?apikey=fc9ce628'
-
     Promise.all([
-      fetch(OMDB_URL + '&s=taxi')
+      fetch('https://imdb-api.com/en/API/Top250Movies/k_xtso692i')
         .then((response) => response.json())
         .then((responseObject) => {
-          if (responseObject.Response === 'True') {
-            setMovieRow1(responseObject.Search)
-          }
+          console.log(responseObject.items)
+          setMovieRow1(responseObject.items)
         }),
-      fetch(OMDB_URL + '&s=travel')
+      fetch('https://imdb-api.com/en/API/MostPopularMovies/k_xtso692i')
         .then((response) => response.json())
         .then((responseObject) => {
-          if (responseObject.Response === 'True') {
-            setMovieRow2(responseObject.Search)
-          }
+          console.log(responseObject.items)
+          setMovieRow2(responseObject.items)
         }),
-      fetch(OMDB_URL + '&s=nature')
+      fetch('https://imdb-api.com/en/API/Keyword/k_xtso692i/dramas')
         .then((response) => response.json())
         .then((responseObject) => {
-          if (responseObject.Response === 'True') {
-            setMovieRow3(responseObject.Search)
-          }
+          console.log(responseObject.items)
+          setMovieRow3(responseObject.items)
         }),
     ])
   }
@@ -43,7 +38,7 @@ const Home = () => {
   return (
     <>
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0">
-        <h1 className="mb-3">For film lovers.</h1>
+        <h1 className="mb-3">Make your own cinema.</h1>
 
         <h3>Find directors, actors and actresses of your taste.</h3>
 
@@ -57,9 +52,9 @@ const Home = () => {
           <Button variant="warning type='submit ">Search</Button>
         </Form>
       </Jumbotron>
-      <MovieRow title="Taxi movies" movies={movieRow1.slice(0, 6)} />
-      <MovieRow title="Travel movies" movies={movieRow2.slice(0, 6)} />
-      <MovieRow title="Nature movies" movies={movieRow3.slice(0, 6)} />
+      <MovieRow title="Best movies" movies={movieRow1.slice(0, 6)} />
+      <MovieRow title="Popular movies" movies={movieRow2.slice(0, 6)} />
+      <MovieRow title="Drama movies" movies={movieRow3.slice(0, 6)} />
     </>
   )
 }

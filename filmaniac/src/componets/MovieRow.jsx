@@ -5,12 +5,12 @@ const MovieGallery = ({ title, movies }) => {
   return (
     <>
       <Container fluid className="pt-5">
-        <h3 className="mb-3">{title}</h3>
+        <h3 className="mb-3 ml-1">{title}</h3>
         <Row>
           {movies.map((movie) => (
-            <Col xs={6} md={2} key={movie.imdbID} className="movie-col">
+            <Col xs={6} md={2} key={movie.id} className="movie-col">
               <Image
-                src={movie.Poster}
+                src={movie.image}
                 rounded
                 alt="movie-image"
                 className="mx-1"

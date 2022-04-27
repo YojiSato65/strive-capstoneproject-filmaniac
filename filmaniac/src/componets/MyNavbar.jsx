@@ -6,7 +6,7 @@ const MyNavbar = () => {
   return (
     <Navbar bg="dark" className="justify-content-between px-5 py-3">
       <div className="d-flex">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Image
             src={require('../assets/Filmaniac.png')}
             width="100"
@@ -17,8 +17,7 @@ const MyNavbar = () => {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Library</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown
               title="Genre"
               id="basic-nav-dropdown"
@@ -31,6 +30,8 @@ const MyNavbar = () => {
               <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Drama</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/library">Library</Nav.Link>
+            <Nav.Link href="/favorite">Watch again</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </div>

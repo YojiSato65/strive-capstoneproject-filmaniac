@@ -1,10 +1,25 @@
 .jumbotron {
-  /* background-color: #343a40 !important; */
   height: 50vh;
   color: white;
+  position: relative;
+  background-color: transparent !important;
+  border-radius: none !important;
+}
+
+.jumbotron::before {
+  content: '';
   background-image: url('../assets/bg-image.jpg');
   background-position-y: 574px;
   background-size: cover;
+  filter: brightness(60%);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  z-index: -3;
 }
 
 .jumbotron h1 {

@@ -1,0 +1,12 @@
+.detail-col {
+  padding-left: 10em !important;
+  padding-right: 10em !important;
+}
+
+span {
+  font-size: 1.5em;
+}
+
+.star {
+  color: #ffc007;
+}
