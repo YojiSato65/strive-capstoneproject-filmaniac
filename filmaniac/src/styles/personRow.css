@@ -1,0 +1,16 @@
+.container-fluid {
+  background-color: rgb(5, 5, 5);
+  color: rgb(239, 239, 239);
+}
+
+.person-col img {
+  width: 100%;
+}
+
+/* .movie-col img {
+  transition: transform 0.2s;
+} */
+
+/* .movie-col img:hover {
+  transform: scale(1.1);
+} */

@@ -29,14 +29,6 @@ const MyFooter = () => {
           <p className="mx-2">Terms of Service</p>
           <p className="mx-2">Privacy Policy</p>
         </div>
-      </Row>
-      <br />
-      <br />
-      <Row className="px-5 justify-content-between">
-        <p className="mx-2">
-          This product uses the TMDB API but is not endorsed or certified by
-          TMDB.
-        </p>
         <div className="d-flex">
           <AiOutlineCopyrightCircle
             className="mx-1 mt-2"
@@ -45,7 +37,8 @@ const MyFooter = () => {
           <p>Filmaniac Holdings, Inc.</p>
         </div>
       </Row>
-      <Row className="px-5 "></Row>
+      <br />
+      <br />
     </Container>
   )
 }

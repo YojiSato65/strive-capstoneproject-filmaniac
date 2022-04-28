@@ -1,4 +1,4 @@
-.home-jumbotron {
+.person-jumbotron {
   height: 50vh;
   color: white;
   position: relative;
@@ -6,12 +6,12 @@
   border-radius: none !important;
 }
 
-.home-jumbotron::before {
+.person-jumbotron::before {
   content: '';
-  background-image: url('../assets/bg-image.jpg');
+  background-image: url('https://images.pexels.com/photos/275200/pexels-photo-275200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
   background-position-y: 574px;
   background-size: cover;
-  filter: brightness(60%);
+  filter: brightness(40%);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -22,16 +22,16 @@
   z-index: -3;
 }
 
-.home-jumbotron h1 {
+.person-jumbotron h1 {
   font-size: 4em;
 }
 
-.home-jumbotron input {
+.person-jumbotron input {
   height: 4em;
   width: 20em;
 }
 
-.home-jumbotron button {
+.person-jumbotron button {
   width: 5em;
   font-size: 2em;
   color: white;

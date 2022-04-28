@@ -30,6 +30,7 @@ const MyNavbar = () => {
               <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Drama</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/person">Person</Nav.Link>
             <Nav.Link href="/library">Library</Nav.Link>
             <Nav.Link href="/favorite">Watch again</Nav.Link>
           </Nav>
