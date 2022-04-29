@@ -1,7 +1,13 @@
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { useState } from 'react'
+import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap'
 import '../styles/movieRow.css'
 
-const MovieGallery = ({ title, movies, searchResult }) => {
+const MovieRow = ({ title, movies, searchResult }) => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   return (
     <>
       <Container fluid className="pt-5">
@@ -12,21 +18,52 @@ const MovieGallery = ({ title, movies, searchResult }) => {
         )}
         <Row>
           {movies.map((movie) => (
-            <Col xs={6} md={2} key={movie.id} className="movie-col">
-              <button>
-                <Image
-                  src={movie.image}
-                  rounded
-                  alt="movie-image"
-                  className="mx-1"
-                />
-              </button>
+            <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+              <Image
+                src={movie.image}
+                rounded
+                alt="movie-image"
+                className="mx-1"
+                onClick={handleShow}
+              />
             </Col>
           ))}
         </Row>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          {/* <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header> */}
+          <Modal.Body>
+            <div className="d-flex">
+              <div>
+                <Image src="" rounded alt="movie-image" className="mx-1" />
+              </div>
+              <div>
+                <h4>Title</h4>
+                <p>Director:</p>
+                <p>Star:</p>
+                <p>Genre:</p>
+              </div>
+            </div>
+          </Modal.Body>
+          {/* <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer> */}
+        </Modal>
       </Container>
     </>
   )
 }
 
-export default MovieGallery
+export default MovieRow

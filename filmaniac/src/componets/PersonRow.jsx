@@ -1,5 +1,6 @@
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import '../styles/personRow.css'
+import { Link } from 'react-router-dom'
 
 const MovieGallery = ({ title, people, searchResult }) => {
   return (
@@ -19,7 +20,9 @@ const MovieGallery = ({ title, people, searchResult }) => {
                 alt="movie-image"
                 className="mx-1"
               />
-              <p className="text-center">{person.title}</p>
+              <Link to="/detail">
+                <p className="text-center">{person.title}</p>
+              </Link>
               <p className="text-center">{person.description}</p>
             </Col>
           ))}
