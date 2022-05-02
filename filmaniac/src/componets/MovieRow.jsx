@@ -12,6 +12,18 @@ const MovieRow = ({ title, movies, searchResult }) => {
   const handleShow = () => setShow(true)
 
   const selectedMovie = useSelector((state) => state.movie.selectedMovie)
+  const selectedMovieList = useSelector((state) => state.movie.favorites)
+  console.log(selectedMovieList)
+  // for (id of selectedMovieList) {
+  //   console.log(id)
+  // }
+  // const distructureMovieArr = () => {
+  //   const [{ id }] = selectedMovieList
+  //   console.log(id)
+  // }
+  // if (selectedMovieList !== []) {
+  //   distructureMovieArr()
+  // }
 
   const dispatch = useDispatch()
 
@@ -31,57 +43,65 @@ const MovieRow = ({ title, movies, searchResult }) => {
         )}
         <Row>
           {movies.map((movie) => (
-            <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
-              <Image
-                src={movie.image}
-                rounded
-                alt="movie-image"
-                className="mx-1"
-                onClick={() => handleClickImage(movie)}
-              />
-            </Col>
-          ))}
-        </Row>
-        <Modal
-          show={show}
-          onHide={handleClose}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          {/* <Modal.Header closeButton>
+            <>
+              <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+                <Image
+                  src={movie.image}
+                  rounded
+                  alt="movie-image"
+                  className="mx-1"
+                  onClick={() => handleClickImage(movie)}
+                />
+              </Col>
+              {/* </>
+          ))} */}
+              {/* </Row> */}
+              <Modal
+                show={show}
+                onHide={handleClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                {/* <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header> */}
-          <Modal.Body>
-            {selectedMovie ? (
-              <div className="d-flex">
-                <div>
-                  <Image
-                    src={selectedMovie.image}
-                    rounded
-                    alt="movie-image"
-                    className="mx-1 modal-image"
-                  />
-                </div>
-                <div>
-                  <h4>Title: {selectedMovie.title}</h4>
-                  <p>Director:</p>
-                  <p>Star:</p>
-                  <p>Genre:</p>
-                  <button
-                    onClick={() =>
-                      dispatch(movieAddToFavsAction(selectedMovie))
-                    }
-                  >
-                    add to favorite
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <></>
-            )}
-          </Modal.Body>
-          {/* <Modal.Footer>
+                <Modal.Body>
+                  {selectedMovie ? (
+                    <div className="d-flex">
+                      <div>
+                        <Image
+                          src={selectedMovie.image}
+                          rounded
+                          alt="movie-image"
+                          className="mx-1 modal-image"
+                        />
+                      </div>
+                      <div>
+                        <h4>Title: {selectedMovie.title}</h4>
+                        <p>Director:</p>
+                        <p>Star:</p>
+                        <p>Genre:</p>
+                        <p>Description:</p>
+                        {selectedMovieList.includes(movie) ? (
+                          <Button variant="dark">Added</Button>
+                        ) : (
+                          <Button
+                            variant="warning"
+                            onClick={() =>
+                              dispatch(movieAddToFavsAction(selectedMovie))
+                            }
+                          >
+                            add to favorite
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </Modal.Body>
+                {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
@@ -89,7 +109,10 @@ const MovieRow = ({ title, movies, searchResult }) => {
               Save Changes
             </Button>
           </Modal.Footer> */}
-        </Modal>
+              </Modal>
+            </>
+          ))}
+        </Row>
       </Container>
     </>
   )

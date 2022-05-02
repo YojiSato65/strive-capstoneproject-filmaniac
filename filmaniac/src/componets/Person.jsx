@@ -12,11 +12,14 @@ import { Link } from 'react-router-dom'
 import { BsFillStarFill } from 'react-icons/bs'
 import '../styles/person.css'
 import PersonRow from './PersonRow'
+import { useSelector } from 'react-redux'
 
 const Person = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchPersonRowTitle, setSearchPersonRowTitle] = useState('')
   const [searchPersonRow, setSearchPersonRow] = useState([])
+
+  const selectedPersonList = useSelector((state) => state.person.favorites)
 
   const handleSearchQuery = async (e) => {
     e.preventDefault()
@@ -73,60 +76,32 @@ const Person = () => {
       <Container fluid className="pt-5 px-5">
         <h3 className="mb-3">Your favorite directors</h3>
         <Row>
-          <Col xs={6} md={2} className="d-flex flex-column mx-3">
-            <Image
-              src="https://plchldr.co/i/100x100"
-              roundedCircle
-              width="200"
-              height="200"
-              alt="movie-image"
-            />
-            <div>
-              <Link to="/detail">
-                <h5 className="text-center mt-3 d-inline-block mr-2">
-                  Director name
-                </h5>
-              </Link>
-              <BsFillStarFill />
-              <p className="d-inline-block">4.0/5</p>
-            </div>
-          </Col>
-          <Col xs={6} md={2} className="d-flex flex-column mx-3">
-            <Image
-              src="https://plchldr.co/i/100x100"
-              roundedCircle
-              width="200"
-              height="200"
-              alt="movie-image"
-            />
-            <div>
-              <Link to="/detail">
-                <h5 className="text-center mt-3 d-inline-block mr-2">
-                  Director name
-                </h5>
-              </Link>
-              <BsFillStarFill />
-              <p className="d-inline-block">4.0/5</p>
-            </div>
-          </Col>
-          <Col xs={6} md={2} className="d-flex flex-column mx-3">
-            <Image
-              src="https://plchldr.co/i/100x100"
-              roundedCircle
-              width="200"
-              height="200"
-              alt="movie-image"
-            />
-            <div>
-              <Link to="/detail">
-                <h5 className="text-center mt-3 d-inline-block mr-2">
-                  Director name
-                </h5>
-              </Link>
-              <BsFillStarFill />
-              <p className="d-inline-block">4.0/5</p>
-            </div>
-          </Col>
+          {selectedPersonList.map((favPerson) => (
+            <Col
+              xs={6}
+              md={2}
+              className="d-flex flex-column m-3"
+              key={favPerson.id}
+            >
+              <Image
+                src={favPerson.image}
+                roundedCircle
+                width="200"
+                height="200"
+                alt="movie-image"
+                className="fav-person-image"
+              />
+              <div>
+                <Link to="/detail">
+                  <h5 className="text-center mt-3 d-inline-block mr-2">
+                    {favPerson.title}
+                  </h5>
+                </Link>
+                <BsFillStarFill />
+                <p className="d-inline-block">4.0/5</p>
+              </div>
+            </Col>
+          ))}
         </Row>
         <br />
         <h3 className="mb-3 mt-5">Your favorite actors</h3>

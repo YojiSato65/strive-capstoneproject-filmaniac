@@ -1,8 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import movieReducer from '../reducers/movie'
 import personReducer from '../reducers/person'
-
 import thunk from 'redux-thunk'
+import { persistReducer, persistStore } from 'redux-persist'
+import localStorage from 'redux-persist/lib/storage'
+import { encryptTransform } from 'redux-persist-transform-encrypt'
+
+
 const composeFunctionThatAlwaysWorks =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -14,8 +18,6 @@ export const initialState = {
     person: {
         favorites: [],
         selectedPerson: null,
-        // isError: false,
-        // isLoading: false,
     }
 }
 
@@ -24,27 +26,42 @@ const bigReducer = combineReducers({
     person: personReducer
 })
 
-const configureStore = createStore(
-    bigReducer,
+const persistConfig = {
+    key: 'root',
+    storage: localStorage,
+    transforms: [
+        encryptTransform({
+            // secretKey: process.env.REACT_APP_SECRET_KEY,
+            secretKey: 'secret-key',
+            onError: (error) =>
+            {
+                console.log(error)
+            },
+        }),
+    ],
+}
+
+const persistedReducer = persistReducer(persistConfig, bigReducer)
+
+export const configureStore = createStore(
+    persistedReducer,
     initialState,
     composeFunctionThatAlwaysWorks(applyMiddleware(thunk))
 )
 
-export default configureStore
+export const persistor = persistStore(configureStore)
 
 
 
 
-// PERSIST
-// import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
+
+// WITHOUT PERSIST
+
+// import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 // import movieReducer from '../reducers/movie'
 // import personReducer from '../reducers/person'
+
 // import thunk from 'redux-thunk'
-// import { persistReducer, persistStore } from 'redux-persist'
-// import localStorage from 'redux-persist/lib/storage'
-// import { encryptTransform } from 'redux-persist-transform-encrypt'
-
-
 // const composeFunctionThatAlwaysWorks =
 //     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -56,8 +73,6 @@ export default configureStore
 //     person: {
 //         favorites: [],
 //         selectedPerson: null,
-//         // isError: false,
-//         // isLoading: false,
 //     }
 // }
 
@@ -66,26 +81,10 @@ export default configureStore
 //     person: personReducer
 // })
 
-// const persistConfig = {
-//     key: 'root',
-//     storage: localStorage,
-//     transforms: [
-//         encryptTransform({
-//             secretKey: process.env.REACT_APP_SECRET_KEY,
-//             onError: (error) =>
-//             {
-//                 console.log(error)
-//             },
-//         }),
-//     ],
-// }
-
-// const persistedReducer = persistReducer(persistConfig, bigReducer)
-
-// export const configureStore = createStore(
-//     persistedReducer,
+// const configureStore = createStore(
+//     bigReducer,
 //     initialState,
 //     composeFunctionThatAlwaysWorks(applyMiddleware(thunk))
 // )
 
-// export const persistor = persistStore(configureStore)
+// export default configureStore

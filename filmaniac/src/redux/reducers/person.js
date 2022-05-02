@@ -15,7 +15,7 @@ const personReducer = (state = initialState.person, action) =>
             return {
                 ...state,
                 favorites: state.favorites.filter(
-                    (id) => id !== action.payload
+                    (person) => person !== action.payload
                 ),
             }
 

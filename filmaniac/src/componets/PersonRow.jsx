@@ -1,17 +1,23 @@
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import '../styles/personRow.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { personSelectAction } from '../redux/actions'
-import { useState } from 'react'
+import { personSelectAction, personAddToFavsAction } from '../redux/actions'
 
 const PersonRow = ({ title, people, searchResult }) => {
+  const selectedPerson = useSelector((state) => state.person.selectedPerson)
+  const selectedPersonList = useSelector((state) => state.person.favorites)
+
   const dispatch = useDispatch()
 
   // const navigate = useNavigate()
 
   const handleClickPerson = (person) => {
     dispatch(personSelectAction(person))
+  }
+
+  const handleAddToFavsPerson = (person) => {
+    dispatch(personAddToFavsAction(person))
   }
 
   return (
@@ -24,18 +30,24 @@ const PersonRow = ({ title, people, searchResult }) => {
         )}
         <Row>
           {people.map((person) => (
-            <Col xs={6} md={2} key={person.id} className="person-col">
+            <Col xs={6} md={2} key={person.id} className="mb-3 person-col">
               <Image
                 src={person.image}
                 rounded
                 alt="movie-image"
                 className="mx-1"
-                onClick={handleClickPerson}
+                onClick={() => handleClickPerson(person)}
               />
               {/* <Link to="/detail"> */}
               <p className="text-center">{person.title}</p>
               {/* </Link> */}
               <p className="text-center">{person.description}</p>
+              <Button
+                variant="warning"
+                onClick={() => handleAddToFavsPerson(person)}
+              >
+                Add to favorite
+              </Button>
             </Col>
           ))}
         </Row>

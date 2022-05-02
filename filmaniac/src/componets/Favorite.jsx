@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import '../styles/home.css'

@@ -21,14 +21,14 @@ export const movieSelectAction = (movie) => ({
     payload: movie,
 })
 
-export const personAddToFavsAction = (id) => ({
+export const personAddToFavsAction = (person) => ({
     type: PERSON_ADD_TO_FAVS,
-    payload: id
+    payload: person
 })
 
-export const personRemoveFromFavsAction = (id) => ({
+export const personRemoveFromFavsAction = (person) => ({
     type: PERSON_REMOVE_FROM_FAVS,
-    payload: id,
+    payload: person,
 })
 
 export const personSelectAction = (person) => ({
