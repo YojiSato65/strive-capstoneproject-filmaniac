@@ -2,16 +2,17 @@ import { useEffect } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { BsFillStarFill } from 'react-icons/bs'
 import '../styles/detail.css'
+import { useParams } from 'react-router-dom'
 
 const Detail = () => {
+  const param = useParams()
+  console.log(param)
   useEffect(() => {
     getDetail()
   }, [])
 
   const getDetail = async () => {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/550?api_key=5295d7a235a8606442096f3858c145e8',
-    )
+    const response = await fetch('https://imdb-api.com/en/API/Name/k_xtso692i/')
     if (response.ok) {
       const data = await response.json()
       console.log(data)

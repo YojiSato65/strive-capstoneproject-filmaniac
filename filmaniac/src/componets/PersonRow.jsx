@@ -1,8 +1,19 @@
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import '../styles/personRow.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { personSelectAction } from '../redux/actions'
+import { useState } from 'react'
 
-const MovieGallery = ({ title, people, searchResult }) => {
+const PersonRow = ({ title, people, searchResult }) => {
+  const dispatch = useDispatch()
+
+  // const navigate = useNavigate()
+
+  const handleClickPerson = (person) => {
+    dispatch(personSelectAction(person))
+  }
+
   return (
     <>
       <Container fluid className="pt-5">
@@ -19,10 +30,11 @@ const MovieGallery = ({ title, people, searchResult }) => {
                 rounded
                 alt="movie-image"
                 className="mx-1"
+                onClick={handleClickPerson}
               />
-              <Link to="/detail">
-                <p className="text-center">{person.title}</p>
-              </Link>
+              {/* <Link to="/detail"> */}
+              <p className="text-center">{person.title}</p>
+              {/* </Link> */}
               <p className="text-center">{person.description}</p>
             </Col>
           ))}
@@ -32,4 +44,4 @@ const MovieGallery = ({ title, people, searchResult }) => {
   )
 }
 
-export default MovieGallery
+export default PersonRow

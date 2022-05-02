@@ -1,5 +1,4 @@
-import { PERSON_ADD_TO_FAVS } from '../actions'
-import { PERSON_REMOVE_FROM_FAVS } from '../actions'
+import { PERSON_ADD_TO_FAVS, PERSON_REMOVE_FROM_FAVS, PERSON_SELECT } from '../actions'
 import { initialState } from '../store'
 
 const personReducer = (state = initialState.person, action) =>
@@ -18,6 +17,12 @@ const personReducer = (state = initialState.person, action) =>
                 favorites: state.favorites.filter(
                     (id) => id !== action.payload
                 ),
+            }
+
+        case PERSON_SELECT:
+            return {
+                ...state,
+                selectedPerson: action.payload
             }
 
         default:

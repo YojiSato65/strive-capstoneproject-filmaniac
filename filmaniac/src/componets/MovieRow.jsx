@@ -1,12 +1,24 @@
 import { useState } from 'react'
 import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap'
 import '../styles/movieRow.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { movieSelectAction } from '../redux/actions'
 
 const MovieRow = ({ title, movies, searchResult }) => {
-  const [show, setShow] = useState(false)
+  // const [movieId, setMovieId] = useState(null)
 
+  const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
+  // const selectedMovie = useSelector((state) => state.job.selectedMovie)
+
+  const dispatch = useDispatch()
+
+  const handleClickImage = (movie) => {
+    handleShow()
+    dispatch(movieSelectAction(movie))
+  }
 
   return (
     <>
@@ -24,7 +36,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
                 rounded
                 alt="movie-image"
                 className="mx-1"
-                onClick={handleShow}
+                onClick={handleClickImage}
               />
             </Col>
           ))}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
 import '../styles/home.css'
 import MovieRow from './MovieRow'
+import { useDispatch } from 'react-redux'
 
 const Home = () => {
   const [movieRow1, setMovieRow1] = useState([])
@@ -13,6 +14,8 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
   const [searchMovieRow, setSearchMovieRow] = useState([])
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getMovies()
