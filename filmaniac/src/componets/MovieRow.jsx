@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap'
 import '../styles/movieRow.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { movieSelectAction } from '../redux/actions'
+import { movieSelectAction, movieAddToFavsAction } from '../redux/actions'
 
 const MovieRow = ({ title, movies, searchResult }) => {
   // const [movieId, setMovieId] = useState(null)
@@ -11,13 +11,14 @@ const MovieRow = ({ title, movies, searchResult }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  // const selectedMovie = useSelector((state) => state.job.selectedMovie)
+  const selectedMovie = useSelector((state) => state.movie.selectedMovie)
 
   const dispatch = useDispatch()
 
   const handleClickImage = (movie) => {
     handleShow()
     dispatch(movieSelectAction(movie))
+    console.log(movie)
   }
 
   return (
@@ -26,7 +27,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
         {!searchResult ? (
           <h3 className="mb-3 ml-1">{title}</h3>
         ) : (
-          <h3 className="mb-3 ml-1">Search result for: {title}</h3>
+          <h3 className="mb-3 ml-1">Search results for: {title}</h3>
         )}
         <Row>
           {movies.map((movie) => (
@@ -36,7 +37,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
                 rounded
                 alt="movie-image"
                 className="mx-1"
-                onClick={handleClickImage}
+                onClick={() => handleClickImage(movie)}
               />
             </Col>
           ))}
@@ -52,17 +53,33 @@ const MovieRow = ({ title, movies, searchResult }) => {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header> */}
           <Modal.Body>
-            <div className="d-flex">
-              <div>
-                <Image src="" rounded alt="movie-image" className="mx-1" />
+            {selectedMovie ? (
+              <div className="d-flex">
+                <div>
+                  <Image
+                    src={selectedMovie.image}
+                    rounded
+                    alt="movie-image"
+                    className="mx-1 modal-image"
+                  />
+                </div>
+                <div>
+                  <h4>Title: {selectedMovie.title}</h4>
+                  <p>Director:</p>
+                  <p>Star:</p>
+                  <p>Genre:</p>
+                  <button
+                    onClick={() =>
+                      dispatch(movieAddToFavsAction(selectedMovie))
+                    }
+                  >
+                    add to favorite
+                  </button>
+                </div>
               </div>
-              <div>
-                <h4>Title</h4>
-                <p>Director:</p>
-                <p>Star:</p>
-                <p>Genre:</p>
-              </div>
-            </div>
+            ) : (
+              <></>
+            )}
           </Modal.Body>
           {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

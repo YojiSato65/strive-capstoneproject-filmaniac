@@ -1,29 +1,31 @@
 import { useState, useEffect } from 'react'
-import { Container, Jumbotron, Button, Form } from 'react-bootstrap'
+import { Container, Row, Col, Image } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import '../styles/home.css'
-import MovieRow from './MovieRow'
 
 const Favorite = () => {
-  const [movieRow1, setMovieRow1] = useState([])
+  const likedMovies = useSelector((state) => state.movie.favorites)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    getMovies()
-  }, [])
-
-  const getMovies = async () => {
-    const response = await fetch(
-      'https://www.omdbapi.com/?apikey=fc9ce628&s=kill',
-    )
-    if (response.ok) {
-      const data = await response.json()
-      console.log(data.Search)
-      setMovieRow1(data.Search)
-    }
-  }
-
+  console.log(likedMovies)
   return (
     <>
-      <MovieRow title="Movies you liked" movies={movieRow1} />
+      <Container fluid className="pt-5">
+        <h3 className="mb-3 ml-1">Movies you liked</h3>
+        <Row>
+          {likedMovies.map((movie) => (
+            <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+              <Image
+                src={movie.image}
+                rounded
+                alt="movie-image"
+                className="mx-1"
+                // onClick={() => handleClickImage(movie)}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </>
   )
 }

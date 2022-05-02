@@ -6,14 +6,14 @@ export const PERSON_ADD_TO_FAVS = 'PERSON_ADD_TO_FAVS'
 export const PERSON_REMOVE_FROM_FAVS = 'PERSON_REMOVE_FROM_FAVS'
 export const PERSON_SELECT = 'PERSON_SELECT'
 
-export const movieAddToFavsAction = (id) => ({
+export const movieAddToFavsAction = (movie) => ({
     type: MOVIE_ADD_TO_FAVS,
-    payload: id
+    payload: movie
 })
 
-export const moveiRemoveFromFavsAction = (id) => ({
+export const movieRemoveFromFavsAction = (movie) => ({
     type: MOVIE_REMOVE_FROM_FAVS,
-    payload: id,
+    payload: movie,
 })
 
 export const movieSelectAction = (movie) => ({

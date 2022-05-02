@@ -1,6 +1,4 @@
-import { MOVIE_ADD_TO_FAVS } from '../actions'
-import { MOVIE_REMOVE_FROM_FAVS } from '../actions'
-import { MOVIE_SELECT } from '../actions'
+import { MOVIE_ADD_TO_FAVS, MOVIE_REMOVE_FROM_FAVS, MOVIE_SELECT } from '../actions'
 import { initialState } from '../store'
 
 const movieReducer = (state = initialState.movie, action) =>
