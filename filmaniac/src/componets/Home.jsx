@@ -15,8 +15,6 @@ const Home = () => {
   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
   const [searchMovieRow, setSearchMovieRow] = useState([])
 
-  const dispatch = useDispatch()
-
   useEffect(() => {
     getMovies()
   }, [])
@@ -26,7 +24,6 @@ const Home = () => {
       fetch('https://imdb-api.com/en/API/Top250Movies/k_xtso692i')
         .then((response) => response.json())
         .then((responseObject) => {
-          console.log(responseObject.items)
           setMovieRow1(responseObject.items)
         }),
       // fetch('https://imdb-api.com/en/API/MostPopularMovies/k_xtso692i')

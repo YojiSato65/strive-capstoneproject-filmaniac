@@ -3,25 +3,28 @@ import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap'
 import '../styles/movieRow.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { movieSelectAction, movieAddToFavsAction } from '../redux/actions'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const MovieRow = ({ title, movies, searchResult }) => {
-  // const [movieId, setMovieId] = useState(null)
-
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   const selectedMovie = useSelector((state) => state.movie.selectedMovie)
-  const selectedMovieList = useSelector((state) => state.movie.favorites)
-  console.log(selectedMovieList)
-  // for (id of selectedMovieList) {
+  const favMovieList = useSelector((state) => state.movie.favorites)
+
+  const [movieDetail, setMovieDetail] = useState({})
+
+  // TYRING TO MAKE LOGIC FOR ADD TO FAV BUTTON
+  // for (id of favMovieList) {
   //   console.log(id)
   // }
   // const distructureMovieArr = () => {
-  //   const [{ id }] = selectedMovieList
+  //   const [{ id }] = favMovieList
   //   console.log(id)
   // }
-  // if (selectedMovieList !== []) {
+  // if (favMovieList !== []) {
   //   distructureMovieArr()
   // }
 
@@ -32,6 +35,23 @@ const MovieRow = ({ title, movies, searchResult }) => {
     dispatch(movieSelectAction(movie))
     console.log(movie)
   }
+
+  useEffect(() => {
+    const getSelectedMovie = async () => {
+      const movieId = selectedMovie.id
+      const response = await fetch(
+        'https://imdb-api.com/en/API/Title/k_xtso692i/' + movieId,
+      )
+      if (response.ok) {
+        const data = await response.json()
+        console.log(data)
+        setMovieDetail(data)
+      }
+    }
+    if (selectedMovie) {
+      getSelectedMovie()
+    }
+  }, [selectedMovie])
 
   return (
     <>
@@ -63,27 +83,42 @@ const MovieRow = ({ title, movies, searchResult }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
               >
-                {/* <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header> */}
                 <Modal.Body>
-                  {selectedMovie ? (
+                  {movieDetail ? (
                     <div className="d-flex">
                       <div>
                         <Image
-                          src={selectedMovie.image}
+                          src={movieDetail.image}
                           rounded
                           alt="movie-image"
                           className="mx-1 modal-image"
                         />
                       </div>
                       <div>
-                        <h4>Title: {selectedMovie.title}</h4>
-                        <p>Director:</p>
-                        <p>Star:</p>
-                        <p>Genre:</p>
-                        <p>Description:</p>
-                        {selectedMovieList.includes(movie) ? (
+                        <h4>Title: {movieDetail.title}</h4>
+                        <p>Director: {movieDetail.directors}</p>
+                        <div>
+                          Star:{' '}
+                          {movieDetail.actorList &&
+                            movieDetail.actorList.slice(0, 4).map((actor) => (
+                              <div>
+                                <p className="d-inline-block mr-2">
+                                  {actor.name}
+                                </p>
+                                <Image
+                                  src={actor.image}
+                                  roundedCircle
+                                  width="40"
+                                  height="40"
+                                  alt="movie-image"
+                                  className="fav-person-image"
+                                ></Image>
+                              </div>
+                            ))}
+                        </div>
+                        <p>Genre: {movieDetail.genres}</p>
+                        <p>Description: {movieDetail.plot}</p>
+                        {favMovieList.includes(movie) ? (
                           <Button variant="dark">Added</Button>
                         ) : (
                           <Button
@@ -92,7 +127,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
                               dispatch(movieAddToFavsAction(selectedMovie))
                             }
                           >
-                            add to favorite
+                            Add to favorite
                           </Button>
                         )}
                       </div>
@@ -101,14 +136,6 @@ const MovieRow = ({ title, movies, searchResult }) => {
                     <></>
                   )}
                 </Modal.Body>
-                {/* <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer> */}
               </Modal>
             </>
           ))}

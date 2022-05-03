@@ -20,6 +20,7 @@ const Person = () => {
   const [searchPersonRow, setSearchPersonRow] = useState([])
 
   const selectedPersonList = useSelector((state) => state.person.favorites)
+  console.log(selectedPersonList)
 
   const handleSearchQuery = async (e) => {
     e.preventDefault()
@@ -74,7 +75,7 @@ const Person = () => {
       )}
 
       <Container fluid className="pt-5 px-5">
-        <h3 className="mb-3">Your favorite directors</h3>
+        <h3 className="mb-3">People you liked</h3>
         <Row>
           {selectedPersonList.map((favPerson) => (
             <Col
@@ -83,27 +84,27 @@ const Person = () => {
               className="d-flex flex-column m-3"
               key={favPerson.id}
             >
-              <Image
-                src={favPerson.image}
-                roundedCircle
-                width="200"
-                height="200"
-                alt="movie-image"
-                className="fav-person-image"
-              />
+              <Link to={'/' + favPerson.id}>
+                <Image
+                  src={favPerson.image}
+                  roundedCircle
+                  width="200"
+                  height="200"
+                  alt="movie-image"
+                  className="fav-person-image"
+                />
+              </Link>
               <div>
-                <Link to="/detail">
-                  <h5 className="text-center mt-3 d-inline-block mr-2">
-                    {favPerson.title}
-                  </h5>
-                </Link>
+                <h5 className="text-center mt-3 d-inline-block mr-2">
+                  {favPerson.title}
+                </h5>
                 <BsFillStarFill />
                 <p className="d-inline-block">4.0/5</p>
               </div>
             </Col>
           ))}
         </Row>
-        <br />
+        {/* <br />
         <h3 className="mb-3 mt-5">Your favorite actors</h3>
         <Row>
           <Col xs={6} md={2} className="d-flex flex-column mx-3">
@@ -113,6 +114,7 @@ const Person = () => {
               width="200"
               height="200"
               alt="movie-image"
+              className="fav-person-image"
             />
             <div>
               <Link to="/detail">
@@ -124,7 +126,7 @@ const Person = () => {
               <p className="d-inline-block">4.0/5</p>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </>
   )

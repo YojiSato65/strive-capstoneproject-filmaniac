@@ -1,12 +1,11 @@
 import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import '../styles/personRow.css'
-import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { personSelectAction, personAddToFavsAction } from '../redux/actions'
 
 const PersonRow = ({ title, people, searchResult }) => {
-  const selectedPerson = useSelector((state) => state.person.selectedPerson)
-  const selectedPersonList = useSelector((state) => state.person.favorites)
+  // const selectedPerson = useSelector((state) => state.person.selectedPerson)
+  // const selectedPersonList = useSelector((state) => state.person.favorites)
 
   const dispatch = useDispatch()
 

@@ -39,4 +39,5 @@
 
 .fav-person-image {
   object-fit: cover;
+  object-position: top;
 }

@@ -1,3 +1,7 @@
+.container-fluid {
+  padding-top: 7em !important;
+}
+
 .detail-col {
   padding-left: 10em !important;
   padding-right: 10em !important;
@@ -9,4 +13,9 @@ span {
 
 .star {
   color: #ffc007;
+}
+
+.person-image {
+  object-fit: cover;
+  object-position: top;
 }
