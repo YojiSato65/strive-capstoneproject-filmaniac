@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Image, Modal } from 'react-bootstrap'
+import { Image, Modal, Badge } from 'react-bootstrap'
 import '../styles/movieRow.css'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -64,7 +64,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
               />
             </div>
             <div>
-              <div className="d-flex">
+              <div className="d-flex mb-3">
                 <h4 className="mr-3">{movieDetail.fullTitle}</h4>
                 {movieDetail.runtimeMins === null ? (
                   <></>
@@ -89,13 +89,23 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   />
                 )}
               </div>
-              <p>Director: {movieDetail.directors}</p>
+              <p>
+                <b>{movieDetail.awards}</b>
+                <Badge variant="warning" className="ml-3">
+                  {movieDetail.imDbRating}
+                </Badge>
+              </p>
+              <p>
+                Director: <b>{movieDetail.directors}</b>
+              </p>
               <div>
                 Star:{' '}
                 {movieDetail.actorList &&
-                  movieDetail.actorList.slice(0, 4).map((actor) => (
-                    <div>
-                      <p className="d-inline-block mr-2">{actor.name}</p>
+                  movieDetail.actorList.slice(0, 3).map((actor) => (
+                    <div key={actor.id}>
+                      <p className="d-inline-block mr-2">
+                        <b>{actor.name}</b>
+                      </p>
                       <Image
                         src={actor.image}
                         roundedCircle

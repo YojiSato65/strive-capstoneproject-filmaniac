@@ -1,6 +1,7 @@
 import { Button, Navbar, NavDropdown, Image, Nav } from 'react-bootstrap'
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import '../styles/mynavbar.css'
+import { Link } from 'react-router-dom'
 
 const MyNavbar = () => {
   return (
@@ -23,16 +24,37 @@ const MyNavbar = () => {
               id="basic-nav-dropdown"
               className="d-inline-block"
             >
-              <NavDropdown.Item
-                to={{ pathname: '/َgenre', state: { movieKind: 'Adventure' } }}
+              <NavDropdown.Item href="/adventure">Adventure</NavDropdown.Item>
+              <NavDropdown.Item href="/comedy">Comedy</NavDropdown.Item>
+              <NavDropdown.Item href="/horror">Horror</NavDropdown.Item>
+              <NavDropdown.Item href="/family">Family</NavDropdown.Item>
+              <NavDropdown.Item href="/romance">Romance</NavDropdown.Item>
+              <NavDropdown.Item href="/animation">Animation</NavDropdown.Item>
+              {/* <NavDropdown.Item
+                to={{ pathname: '/genre', state: { movieKind: 'Comedy' } }}
               >
-                Adventure
+                Comedy
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Family</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Animation</NavDropdown.Item>
+              <NavDropdown.Item
+                to={{ pathname: '/genre', state: { movieKind: 'Horror' } }}
+              >
+                Horror
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to={{ pathname: '/genre', state: { movieKind: 'Family' } }}
+              >
+                Family
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to={{ pathname: '/genre', state: { movieKind: 'Romance' } }}
+              >
+                Romance
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to={{ pathname: '/genre', state: { movieKind: 'Animation' } }}
+              >
+                Animation
+              </NavDropdown.Item> */}
             </NavDropdown>
             <Nav.Link href="/person">Person</Nav.Link>
             <Nav.Link href="/favorite">Watch again</Nav.Link>

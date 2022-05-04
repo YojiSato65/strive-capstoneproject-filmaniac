@@ -1,11 +1,19 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { BsFillStarFill } from 'react-icons/bs'
 import '../styles/personDetail.css'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { movieSelectAction } from '../redux/actions'
+import MyModal from './MyModal'
 
 const PersonDetail = () => {
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const dispatch = useDispatch()
+
   const { personId } = useParams()
   console.log(personId)
 
@@ -24,6 +32,11 @@ const PersonDetail = () => {
       setDetailPerson(data)
       console.log(data)
     }
+  }
+
+  const handleClickImage = (movie) => {
+    handleShow()
+    dispatch(movieSelectAction(movie))
   }
 
   return (
@@ -59,7 +72,7 @@ const PersonDetail = () => {
             <h3 className="mb-3">Movies</h3>
             <Row>
               {detailPerson.knownFor?.map((movie) => (
-                <Col xs={6} md={6}>
+                <Col xs={6} md={6} className="movie-col">
                   <Image
                     src={movie.image}
                     rounded
@@ -67,6 +80,7 @@ const PersonDetail = () => {
                     height="300"
                     alt="movie-image"
                     className="m-2"
+                    onClick={() => handleClickImage(movie)}
                   />
                   <h5 className="text-center">{movie.fullTitle}</h5>
                 </Col>
@@ -75,6 +89,12 @@ const PersonDetail = () => {
           </Col>
         </Row>
       </Container>
+      <MyModal
+        handleClickImage={handleClickImage}
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
     </>
   )
 }

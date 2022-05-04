@@ -1,5 +1,10 @@
 .navbar {
   background-color: rgb(5, 5, 5) !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .acount-icon {
