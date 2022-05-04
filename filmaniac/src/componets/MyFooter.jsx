@@ -6,7 +6,7 @@ import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 const MyFooter = () => {
   return (
     <Container fluid>
-      <Row className="px-5 justify-content-between">
+      <Row className="justify-content-between">
         <div className="d-flex">
           <p className="mx-2">App Setting</p>
           <p className="mx-2">About Filmaniac</p>
@@ -22,7 +22,7 @@ const MyFooter = () => {
       </Row>
       <br />
       <br />
-      <Row className="px-5 justify-content-between">
+      <Row className="justify-content-between">
         <div className="d-flex">
           <p className="mx-2">Company Profile</p>
           <p className="mx-2">Indication Required by Law</p>

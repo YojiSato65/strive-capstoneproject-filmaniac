@@ -43,7 +43,7 @@ const Person = () => {
           Find your favorite directors, actors and actresses.
         </h1>
 
-        <h3>Find directors, actors and actresses of your taste.</h3>
+        <h3>Watch anywhere. Cancel anytime.</h3>
 
         <Form
           className="d-flex justify-content-center mt-3"

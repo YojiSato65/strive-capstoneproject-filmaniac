@@ -18,6 +18,7 @@ function App()
         <Route path='/person' element={<Person />} />
         <Route path='/favorite' element={<Favorite />} />
         <Route path='/:personId' element={<PersonDetail />} />
+        {/* <Route path='/genre' element={<Genre />} /> */}
       </Routes>
       <MyFooter />
     </BrowserRouter>

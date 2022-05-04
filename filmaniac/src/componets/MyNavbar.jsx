@@ -23,12 +23,16 @@ const MyNavbar = () => {
               id="basic-nav-dropdown"
               className="d-inline-block"
             >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item
+                to={{ pathname: '/َgenre', state: { movieKind: 'Adventure' } }}
+              >
+                Adventure
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Comedy</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Sci-Fi</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Family</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Drama</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Animation</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/person">Person</Nav.Link>
             <Nav.Link href="/favorite">Watch again</Nav.Link>

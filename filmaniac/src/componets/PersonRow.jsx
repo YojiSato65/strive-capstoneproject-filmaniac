@@ -38,7 +38,7 @@ const PersonRow = ({ title, people, searchResult }) => {
                 onClick={() => handleClickPerson(person)}
               />
               {/* <Link to="/detail"> */}
-              <p className="text-center">{person.title}</p>
+              <h4 className="text-center mt-1">{person.title}</h4>
               {/* </Link> */}
               <p className="text-center">{person.description}</p>
               <Button

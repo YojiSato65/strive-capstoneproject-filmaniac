@@ -1,6 +1,8 @@
 .container-fluid {
   background-color: rgb(5, 5, 5);
   color: rgb(239, 239, 239);
+  padding-left: 3em;
+  padding-right: 3em;
 }
 
 .movie-col img {
@@ -19,4 +21,15 @@
   width: 200px;
   height: 300px;
   object-fit: contain;
+}
+
+.modal-body {
+  background-color: rgb(12, 12, 12);
+  color: rgb(239, 239, 239);
+}
+
+.heart-icon {
+  font-size: 1.7em;
+  margin-top: 0.1em;
+  color: #ffc107;
 }
