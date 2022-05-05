@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
 import '../styles/home.css'
 import MovieRow from './MovieRow'
-import { useDispatch } from 'react-redux'
+import MyJumbotron from './MyJumbotron'
 
 const Home = () => {
   const [movieRow1, setMovieRow1] = useState([])
@@ -11,13 +11,6 @@ const Home = () => {
   // const [movieRow4, setMovieRow4] = useState([])
   // const [movieRow5, setMovieRow5] = useState([])
 
-  const [movieRowAdventure, setMovieRowAdventure] = useState([])
-  const [movieRowComedy, setMovieRowComedy] = useState([])
-  const [movieRowHorror, setMovieRowHorror] = useState([])
-  const [movieRowFamily, setMovieRowFamily] = useState([])
-  const [movieRowRomance, setMovieRowRomance] = useState([])
-  const [movieRowAnimation, setMovieRowAnimation] = useState([])
-
   const [searchQuery, setSearchQuery] = useState('')
   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
   const [searchMovieRow, setSearchMovieRow] = useState([])
@@ -25,32 +18,6 @@ const Home = () => {
   useEffect(() => {
     getMovies()
   }, [])
-
-  // const { movieKind } = location.state;
-
-  // const [movies, setMovies] = useState([]);
-
-  // const mapSearchURLs = {
-  //   Adventure: 'AdvancedSearch/k_xtso692i/?genres=action',
-  //   Drama: 'AdvancedSearch/k_xtso692i/?genres=drama',
-  // }
-  // mapSearchURLs.Adventure
-  // mapSearchURLs.movieKind
-  // mapSearchURLs[props.movieKind]
-
-  // const mapTitles = {
-  //   Adventure: 'Adventure',
-  //   Drama: 'Drama',
-  // }
-
-  // const title = mapTitles[props.movieKind];
-
-  // Promise.all([
-  //   fetch(`${https://imdb-api.com/en/API/}${mapSearchURLs[movieKind]}`)
-  //     .then((response) => response.json())
-  //     .then((responseObject) => {
-  //       setMovies(responseObject.items)
-  //     }),
 
   const getMovies = () => {
     Promise.all([
@@ -103,10 +70,7 @@ const Home = () => {
   return (
     <>
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 home-jumbotron">
-        <h1 className="mb-3">Unlimited movies, for movie lovers.</h1>
-
-        <h3>Watch anywhere. Cancel anytime.</h3>
-
+        <MyJumbotron />
         <Form
           className="d-flex justify-content-center mt-3"
           onSubmit={handleSearchQuery}
@@ -114,7 +78,7 @@ const Home = () => {
           <Form.Group className="mb-0">
             <Form.Control
               type="text"
-              placeholder="Movie title.."
+              placeholder="Movie title"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -125,7 +89,7 @@ const Home = () => {
         </Form>
       </Jumbotron>
 
-      {!searchQuery ? (
+      {!searchMovieRowTitle ? (
         <>
           <MovieRow title="Best movies" movies={movieRow1.slice(0, 6)} />
           {/* <MovieRow title="Popular movies" movies={movieRow2.slice(0, 6)} />

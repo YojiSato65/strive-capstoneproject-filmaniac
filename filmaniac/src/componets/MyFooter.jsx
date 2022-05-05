@@ -5,7 +5,7 @@ import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 
 const MyFooter = () => {
   return (
-    <Container fluid>
+    <Container fluid className="footer-container">
       <Row className="justify-content-between">
         <div className="d-flex">
           <p className="mx-2">App Setting</p>

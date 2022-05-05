@@ -3,6 +3,7 @@ import { Jumbotron, Button, Form } from 'react-bootstrap'
 import '../../styles/home.css'
 import MovieRow from '../MovieRow'
 import { useDispatch } from 'react-redux'
+import MyJumbotron from '../MyJumbotron'
 
 const Family = () => {
   const [movieRow, setMovieRow] = useState([])
@@ -43,9 +44,7 @@ const Family = () => {
   return (
     <>
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 home-jumbotron">
-        <h1 className="mb-3">Unlimited movies, for movie lovers.</h1>
-
-        <h3>Watch anywhere. Cancel anytime.</h3>
+        <MyJumbotron />
 
         <Form
           className="d-flex justify-content-center mt-3"

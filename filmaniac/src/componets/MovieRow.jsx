@@ -19,7 +19,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
 
   return (
     <>
-      <Container fluid className="pt-5">
+      <Container fluid>
         {!searchResult ? (
           <h3 className="mb-3 ml-1">{title}</h3>
         ) : (

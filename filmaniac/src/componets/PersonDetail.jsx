@@ -41,7 +41,7 @@ const PersonDetail = () => {
 
   return (
     <>
-      <Container fluid className="px-5">
+      <Container fluid className="px-5 person-detail-container">
         <Row>
           <Col xs={6} md={6} className="detail-col">
             <h3 className="mb-3">Details</h3>
