@@ -21,7 +21,7 @@ const Favorite = () => {
 
   return (
     <>
-      <Container fluid className="pt-5">
+      <Container fluid className="fav-container">
         <>
           <h3 className="mb-3 ml-1">Movies you liked</h3>
           <Row>

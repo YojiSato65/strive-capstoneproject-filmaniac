@@ -39,11 +39,9 @@ const Person = () => {
   return (
     <>
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 person-jumbotron">
-        <h1 className="mb-3">
-          Find your favorite directors, actors and actresses.
-        </h1>
+        <h1 className="mb-3">Who do you like?</h1>
 
-        <h3>Watch anywhere. Cancel anytime.</h3>
+        <h3>The movie lover's database and streaming website in one.</h3>
 
         <Form
           className="d-flex justify-content-center mt-3"

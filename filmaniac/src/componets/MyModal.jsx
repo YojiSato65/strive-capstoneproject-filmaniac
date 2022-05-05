@@ -8,7 +8,7 @@ import {
   movieRemoveFromFavsAction,
 } from '../redux/actions'
 import { useEffect } from 'react'
-import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
+import { BsHeart, BsFillHeartFill, BsPlayCircle } from 'react-icons/bs'
 
 const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
   const selectedMovie = useSelector((state) => state.movie.selectedMovie)
@@ -60,8 +60,22 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 src={movieDetail.image}
                 rounded
                 alt="movie-image"
-                className="mx-1 modal-image"
+                className="modal-image"
               />
+              <div className="d-flex justify-content-center px-2 py-2 mt-3 play-div">
+                <b className="mr-2">Watch now</b>
+                <BsPlayCircle className="play-icon" />
+              </div>
+              <div className="d-flex genre-div mt-1">
+                {movieDetail.genreList &&
+                  movieDetail.genreList
+                    .slice(0, 3)
+                    .map((genre) => (
+                      <span className="genre-list mt-2 mx-1 py-1 px-2">
+                        {genre.key}
+                      </span>
+                    ))}
+              </div>
             </div>
             <div>
               <div className="d-flex mb-3">
@@ -89,12 +103,18 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   />
                 )}
               </div>
-              <p>
+              <p className="mb-1">
                 <b>{movieDetail.awards}</b>
-                <Badge variant="warning" className="ml-3">
-                  {movieDetail.imDbRating}
-                </Badge>
               </p>
+              <p className="d-inline-block">imDb RATING</p>
+              <Badge variant="warning" className="ml-1">
+                {movieDetail.imDbRating}
+              </Badge>
+              <p className="d-inline-block ml-4">metacritic RATING</p>
+              <Badge variant="warning" className="ml-1">
+                {movieDetail.metacriticRating}
+              </Badge>
+              <hr />
               <p>
                 Director: <b>{movieDetail.directors}</b>
               </p>
@@ -103,7 +123,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 {movieDetail.actorList &&
                   movieDetail.actorList.slice(0, 3).map((actor) => (
                     <div key={actor.id}>
-                      <p className="d-inline-block mr-2">
+                      <p className="d-inline-block mr-2 mb-1">
                         <b>{actor.name}</b>
                       </p>
                       <Image
@@ -117,8 +137,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                     </div>
                   ))}
               </div>
-              <p>Genre: {movieDetail.genres}</p>
-              <p>Description: {movieDetail.plot}</p>
+              <p className="mt-2">Description: {movieDetail.plot}</p>
             </div>
           </div>
         </Modal.Body>
