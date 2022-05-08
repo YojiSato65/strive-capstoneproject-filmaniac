@@ -20,7 +20,7 @@ const Genre = () => {
 
   const getMovies = async () => {
     const response = await fetch(
-      `https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=${genre}`,
+      `https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=${genre}&count=18`,
     )
     if (response.ok) {
       const data = await response.json()

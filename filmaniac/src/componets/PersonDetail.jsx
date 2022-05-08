@@ -5,6 +5,11 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { movieSelectAction } from '../redux/actions'
 import MyModal from './MyModal'
+import {
+  personAddToFavsAction,
+  personRemoveFromFavsAction,
+} from '../redux/actions'
+import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
 
 const PersonDetail = () => {
   const [show, setShow] = useState(false)
@@ -20,9 +25,10 @@ const PersonDetail = () => {
   const { personId } = useParams()
   console.log('personId', personId)
   console.log('selectedPerson', selectedPerson)
-  // const isPersonSelected = favPersonList.some(
-  //   (element) => element.id === selectedPerson.id,
-  // )
+
+  const isPersonSelected = favPersonList.some(
+    (element) => element?.id === personId,
+  )
 
   useEffect(() => {
     getPersonDetail()
@@ -39,31 +45,17 @@ const PersonDetail = () => {
     }
   }
 
-  // const getPersonDetail = () => {
-  //   Promise.all([
-  //     fetch('https://imdb-api.com/en/API/Top250Movies/k_xtso692i')
-  //       .then((response) => response.json())
-  //       .then((responseObject) => {
-  //         setMovieRow1(responseObject.items)
-  //       }),
-  //     fetch('https://imdb-api.com/en/API/MostPopularMovies/k_xtso692i')
-  //       .then((response) => response.json())
-  //       .then((responseObject) => {
-  //         console.log(responseObject.items)
-  //         setMovieRow2(responseObject.items)
-  //       }),
-  //   ])
-  // }
-
   const handleClickImage = (movie) => {
     handleShow()
     dispatch(movieSelectAction(movie))
   }
 
-  console.log('======', detailPerson, detailPerson.length)
-  if (detailPerson.length === undefined) {
-    return <p style={{ color: 'white' }}>unko</p>
-  }
+  // const favPerson = favPersonList.find((person) => person?.id === personId)
+
+  // console.log('======', detailPerson, detailPerson.length)
+  // if (detailPerson === undefined) {
+  //   return <p style={{ color: 'white' }}>unko</p>
+  // }
 
   return (
     <>
@@ -86,22 +78,21 @@ const PersonDetail = () => {
                   {detailPerson.name}
                 </h3>
                 <p className="mt-4 ml-2">- {detailPerson.role}</p>
-                {/* {isPersonSelected ? (
+                {isPersonSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
                     onClick={() =>
-                      // console.log('selectedmovie', selectedMovie) ||
-                      dispatch(personRemoveFromFavsAction(selectedPerson))
+                      dispatch(personRemoveFromFavsAction(detailPerson))
                     }
                   />
                 ) : (
                   <BsHeart
                     className="heart-icon"
                     onClick={() =>
-                      dispatch(personAddToFavsAction(selectedPerson))
+                      dispatch(personAddToFavsAction(detailPerson))
                     }
                   />
-                )} */}
+                )}
               </div>
               <p className="mb-2">
                 Awards:

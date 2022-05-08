@@ -27,17 +27,15 @@ const MovieRow = ({ title, movies, searchResult }) => {
         )}
         <Row>
           {movies.map((movie) => (
-            <>
-              <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
-                <Image
-                  src={movie.image}
-                  rounded
-                  alt="movie-image"
-                  className="mx-1"
-                  onClick={() => handleClickImage(movie)}
-                />
-              </Col>
-            </>
+            <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+              <Image
+                src={movie.image}
+                rounded
+                alt="movie-image"
+                className="mx-1"
+                onClick={() => handleClickImage(movie)}
+              />
+            </Col>
           ))}
         </Row>
       </Container>

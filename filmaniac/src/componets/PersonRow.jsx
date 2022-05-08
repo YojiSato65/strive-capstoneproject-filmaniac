@@ -16,7 +16,7 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
   const dispatch = useDispatch()
 
   const isPersonSelected = (personId) => {
-    return favPersonList.some((element) => element.id === personId)
+    return favPersonList.some((element) => element?.id === personId)
   }
 
   const role = (description) => {

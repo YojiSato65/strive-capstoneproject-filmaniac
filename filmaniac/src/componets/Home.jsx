@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
 import '../styles/home.css'
+import MovieCarouselRow from './MovieCarouselRow'
 import MovieRow from './MovieRow'
 import MyJumbotron from './MyJumbotron'
 
@@ -32,19 +33,25 @@ const Home = () => {
       //     console.log(responseObject.items)
       //     setMovieRow2(responseObject.items)
       //   }),
-      fetch('https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=action')
+      fetch(
+        'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=action&count=18',
+      )
         .then((response) => response.json())
         .then((responseObject) => {
           console.log(responseObject.results)
           setMovieRow3(responseObject.results)
         }),
-      fetch('https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=sci-fi')
+      fetch(
+        'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=sci-fi&count=18',
+      )
         .then((response) => response.json())
         .then((responseObject) => {
           console.log(responseObject.results)
           setMovieRow4(responseObject.results)
         }),
-      fetch('https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=drama')
+      fetch(
+        'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=drama&count=18',
+      )
         .then((response) => response.json())
         .then((responseObject) => {
           console.log(responseObject.results)
@@ -57,7 +64,7 @@ const Home = () => {
     e.preventDefault()
 
     const response = await fetch(
-      'https://imdb-api.com/en/API/SearchMovie/k_xtso692i/' + searchQuery,
+      `https://imdb-api.com/en/API/SearchMovie/k_xtso692i/${searchQuery}`,
     )
     if (response.ok) {
       const data = await response.json()
@@ -91,11 +98,30 @@ const Home = () => {
 
       {!searchMovieRowTitle ? (
         <>
-          {/* <MovieRow title="Best movies" movies={movieRow1.slice(0, 6)} />
-          <MovieRow title="Popular movies" movies={movieRow2.slice(0, 6)} /> */}
-          <MovieRow title="Action" movies={movieRow3.slice(0, 6)} />
-          <MovieRow title="Sci-fi" movies={movieRow4.slice(0, 6)} />
-          <MovieRow title="Drama" movies={movieRow5.slice(0, 6)} />
+          <MovieCarouselRow
+            title="Action"
+            nestedMovies={[
+              movieRow3.slice(0, 6),
+              movieRow3.slice(6, 12),
+              movieRow3.slice(12, 18),
+            ]}
+          />
+          <MovieCarouselRow
+            title="Sci-fi"
+            nestedMovies={[
+              movieRow4.slice(0, 6),
+              movieRow4.slice(6, 12),
+              movieRow4.slice(12, 18),
+            ]}
+          />
+          <MovieCarouselRow
+            title="Drama"
+            nestedMovies={[
+              movieRow5.slice(0, 6),
+              movieRow5.slice(6, 12),
+              movieRow5.slice(12, 18),
+            ]}
+          />
         </>
       ) : (
         <MovieRow

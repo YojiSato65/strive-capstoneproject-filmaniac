@@ -14,6 +14,20 @@ const Person = () => {
 
   const dispatch = useDispatch()
 
+  const role = (description = '') => {
+    if (description.includes('Actor')) {
+      return 'Actor'
+    } else if (description.includes('Actress')) {
+      return 'Actress'
+    } else if (description.includes('Writer')) {
+      return 'Writer'
+    } else if (description.includes('Director')) {
+      return 'Director'
+    } else {
+      return 'Crew'
+    }
+  }
+
   return (
     <>
       <Container fluid className="px-5 liked-person-container">
@@ -48,7 +62,7 @@ const Person = () => {
                     dispatch(personRemoveFromFavsAction(favPerson))
                   }
                 />
-                <p>{favPerson?.description}</p>
+                <p>{role(favPerson?.description)}</p>
               </div>
             </Col>
           ))}
