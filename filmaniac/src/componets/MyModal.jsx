@@ -68,27 +68,28 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
               </div>
               <div className="d-flex genre-div mt-1">
                 {movieDetail.genreList &&
-                  movieDetail.genreList
-                    .slice(0, 3)
-                    .map((genre) => (
-                      <span className="genre-list mt-2 mx-1 py-1 px-2">
-                        {genre.key}
-                      </span>
-                    ))}
+                  movieDetail.genreList.slice(0, 3).map((genre) => (
+                    <span
+                      className="genre-list mt-2 mx-1 py-1 px-2"
+                      key={genre.key}
+                    >
+                      {genre.key}
+                    </span>
+                  ))}
               </div>
             </div>
             <div>
-              <div className="d-flex mb-3">
-                <h4 className="mr-3">{movieDetail.fullTitle}</h4>
+              <div className="d-flex mb-2">
+                <h3 className="mr-3">{movieDetail.fullTitle}</h3>
                 {movieDetail.runtimeMins === null ? (
                   <></>
                 ) : (
-                  <h5 className="mr-3 mt-1">{movieDetail.runtimeMins} mins</h5>
+                  <h5 className="mr-3 mt-2">{movieDetail.runtimeMins} mins</h5>
                 )}
 
                 {isMovieSelected ? (
                   <BsFillHeartFill
-                    className="heart-icon mt-1"
+                    className="heart-icon"
                     onClick={() =>
                       // console.log('selectedmovie', selectedMovie) ||
                       dispatch(movieRemoveFromFavsAction(selectedMovie))
@@ -103,17 +104,28 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   />
                 )}
               </div>
-              <p className="mb-1">
+              <p className="mb-1 award-p">
                 <b>{movieDetail.awards}</b>
               </p>
-              <p className="d-inline-block">imDb RATING</p>
-              <Badge variant="warning" className="ml-1">
-                {movieDetail.imDbRating}
-              </Badge>
-              <p className="d-inline-block ml-4">metacritic RATING</p>
-              <Badge variant="warning" className="ml-1">
-                {movieDetail.metacriticRating}
-              </Badge>
+              {movieDetail.imDbRating && (
+                <>
+                  <p className="d-inline-block">IMDb RATING</p>
+                  <Badge variant="warning" className="mx-1">
+                    {movieDetail.imDbRating}
+                  </Badge>
+                  <p className="d-inline-block">/10</p>
+                </>
+              )}
+              {movieDetail.metacriticRating && (
+                <>
+                  <p className="d-inline-block ml-4">Metacritic RATING</p>
+                  <Badge variant="warning" className="mx-1">
+                    {movieDetail.metacriticRating}
+                  </Badge>
+                  <p className="d-inline-block">/100</p>
+                </>
+              )}
+
               <hr />
               <p>
                 Director: <b>{movieDetail.directors}</b>

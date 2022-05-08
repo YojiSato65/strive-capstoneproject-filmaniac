@@ -41,3 +41,10 @@
   object-fit: cover;
   object-position: top;
 }
+
+.fav-person-image {
+  transition: transform 0.1s;
+}
+.fav-person-image:hover {
+  transform: scale(1.1);
+}

@@ -1,7 +1,7 @@
+import '../styles/home.css'
 import { useState } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import '../styles/home.css'
 import { movieSelectAction } from '../redux/actions'
 import MyModal from './MyModal'
 
@@ -45,7 +45,6 @@ const Favorite = () => {
         handleClose={handleClose}
         handleShow={handleShow}
       />
-      <div style={{ height: '400px', backgroundColor: '#050505' }}></div>
     </>
   )
 }

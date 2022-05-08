@@ -4,13 +4,19 @@
 }
 
 .person-col img {
-  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
-/* .movie-col img {
-  transition: transform 0.2s;
-} */
+.person-col img {
+  transition: transform 0.1s;
+}
 
-/* .movie-col img:hover {
+.person-col img:hover {
   transform: scale(1.1);
-} */
+}
+
+.person-container,
+.liked-person-container {
+  padding-top: 5em;
+}
