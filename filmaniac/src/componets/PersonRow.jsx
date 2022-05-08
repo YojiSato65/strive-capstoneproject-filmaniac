@@ -11,7 +11,6 @@ import {
 import { Link } from 'react-router-dom'
 
 const PersonRow = ({ title, people, searchPersonRowTitle }) => {
-  const selectedPerson = useSelector((state) => state.person.selectedPerson)
   const favPersonList = useSelector((state) => state.person.favorites)
 
   const dispatch = useDispatch()
@@ -77,45 +76,6 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
                 />
               )}
               <p className="text-center">{role(person.description)}</p>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-
-      <Container fluid className="px-5 liked-person-container">
-        <h3 className="mb-3">People You Liked</h3>
-        <Row>
-          {favPersonList.map((favPerson) => (
-            <Col
-              xs={6}
-              md={2}
-              className="d-flex flex-column m-3"
-              key={favPerson?.id}
-            >
-              <Link to={'/' + favPerson?.id}>
-                <Image
-                  src={favPerson?.image}
-                  roundedCircle
-                  width="200"
-                  height="200"
-                  alt="movie-image"
-                  className="fav-person-image"
-                  onClick={() => dispatch(personSelectAction(favPerson))}
-                />
-              </Link>
-              <div>
-                <h5 className="text-center mt-3 d-inline-block mr-2">
-                  {favPerson?.title}
-                </h5>
-                <BsFillHeartFill
-                  className="heart-icon"
-                  onClick={() =>
-                    // console.log('selectedmovie', selectedMovie) ||
-                    dispatch(personRemoveFromFavsAction(favPerson))
-                  }
-                />
-                <p>{favPerson?.description}</p>
-              </div>
             </Col>
           ))}
         </Row>

@@ -1,7 +1,6 @@
 import { Button, Navbar, NavDropdown, Image, Nav } from 'react-bootstrap'
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import '../styles/mynavbar.css'
-import { Link } from 'react-router-dom'
 
 const MyNavbar = () => {
   return (
@@ -24,40 +23,26 @@ const MyNavbar = () => {
               id="basic-nav-dropdown"
               className="d-inline-block"
             >
-              <NavDropdown.Item href="/adventure">Adventure</NavDropdown.Item>
-              <NavDropdown.Item href="/comedy">Comedy</NavDropdown.Item>
-              <NavDropdown.Item href="/horror">Horror</NavDropdown.Item>
-              <NavDropdown.Item href="/family">Family</NavDropdown.Item>
-              <NavDropdown.Item href="/romance">Romance</NavDropdown.Item>
-              <NavDropdown.Item href="/animation">Animation</NavDropdown.Item>
-              {/* <NavDropdown.Item
-                to={{ pathname: '/genre', state: { movieKind: 'Comedy' } }}
-              >
-                Comedy
+              <NavDropdown.Item href="/genre/adventure">
+                Adventure
               </NavDropdown.Item>
-              <NavDropdown.Item
-                to={{ pathname: '/genre', state: { movieKind: 'Horror' } }}
-              >
-                Horror
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                to={{ pathname: '/genre', state: { movieKind: 'Family' } }}
-              >
-                Family
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                to={{ pathname: '/genre', state: { movieKind: 'Romance' } }}
-              >
-                Romance
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                to={{ pathname: '/genre', state: { movieKind: 'Animation' } }}
-              >
+              <NavDropdown.Item href="/genre/comedy">Comedy</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/horror">Horror</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/family">Family</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/romance">Romance</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/animation">
                 Animation
-              </NavDropdown.Item> */}
+              </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/person">Person</Nav.Link>
-            <Nav.Link href="/favorite">Watch again</Nav.Link>
+            <Nav.Link href="/crew">Crew</Nav.Link>
+            <NavDropdown
+              title="Favorite"
+              id="basic-nav-dropdown"
+              className="d-inline-block"
+            >
+              <NavDropdown.Item href="/favorite/movie">Movie</NavDropdown.Item>
+              <NavDropdown.Item href="/favorite/person">Crew</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </div>

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
 import PersonRow from './PersonRow'
 
-const Person = () => {
+const SearchPerson = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchPersonRowTitle, setSearchPersonRowTitle] = useState('')
   const [searchPersonRow, setSearchPersonRow] = useState([])
@@ -56,4 +56,4 @@ const Person = () => {
   )
 }
 
-export default Person
+export default SearchPerson

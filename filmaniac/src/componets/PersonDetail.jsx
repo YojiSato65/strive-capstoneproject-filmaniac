@@ -1,15 +1,9 @@
 import '../styles/personDetail.css'
-import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { movieSelectAction } from '../redux/actions'
-import {
-  personSelectAction,
-  personAddToFavsAction,
-  personRemoveFromFavsAction,
-} from '../redux/actions'
 import MyModal from './MyModal'
 
 const PersonDetail = () => {
@@ -64,6 +58,11 @@ const PersonDetail = () => {
   const handleClickImage = (movie) => {
     handleShow()
     dispatch(movieSelectAction(movie))
+  }
+
+  console.log('======', detailPerson, detailPerson.length)
+  if (detailPerson.length === undefined) {
+    return <p style={{ color: 'white' }}>unko</p>
   }
 
   return (

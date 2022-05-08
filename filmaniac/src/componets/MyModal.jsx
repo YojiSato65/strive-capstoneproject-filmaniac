@@ -9,6 +9,7 @@ import {
 } from '../redux/actions'
 import { useEffect } from 'react'
 import { BsHeart, BsFillHeartFill, BsPlayCircle } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
   const selectedMovie = useSelector((state) => state.movie.selectedMovie)
@@ -136,7 +137,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   movieDetail.actorList.slice(0, 3).map((actor) => (
                     <div key={actor.id}>
                       <p className="d-inline-block mr-2 mb-1">
-                        <b>{actor.name}</b>
+                        <Link to={`/${actor.id}`}>
+                          <b>{actor.name}</b>
+                        </Link>
                       </p>
                       <Image
                         src={actor.image}

@@ -1,78 +1,52 @@
-// TRY TO MAKE IT DYNAMIC BUT COULDN'T FIGURE OUT
+import { useState, useEffect } from 'react'
+import { Jumbotron, Button, Form } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import '../styles/home.css'
+import MovieRow from './MovieRow'
+import MyJumbotron from './MyJumbotron'
 
-// import { useState, useEffect } from 'react'
-// import { Jumbotron, Button, Form } from 'react-bootstrap'
-// import '../styles/home.css'
-// import MovieRow from './MovieRow'
-// import { useDispatch } from 'react-redux'
-// import { useLocation } from 'react-router-dom'
+const Genre = () => {
+  const [movieRow, setMovieRow] = useState([])
 
-// const Genre = (props) => {
-//   const [searchQuery, setSearchQuery] = useState('')
-//   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
-//   const [searchMovieRow, setSearchMovieRow] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
+  const [searchMovieRow, setSearchMovieRow] = useState([])
 
-//   const location = useLocation()
-// const { movieKind } = location
-// console.log('props', props)
-// console.log('location', location)
-// console.log('props.location.state', props.location.state)
-// console.log('moviekind', movieKind)
-// console.log('props.moviekind', props.movieKind)
+  const { genre } = useParams()
 
-// useEffect(() => {
-//   getMovies()
-// }, [])
+  useEffect(() => {
+    getMovies()
+  }, [])
 
-// const [movies, setMovies] = useState([]);
+  const getMovies = async () => {
+    const response = await fetch(
+      `https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=${genre}`,
+    )
+    if (response.ok) {
+      const data = await response.json()
+      setMovieRow(data.results)
+      console.log('movieRow', movieRow)
+    }
+  }
 
-// const mapSearchURLs = {
-//   Adventure: 'AdvancedSearch/k_xtso692i/?genres=action',
-//   Drama: 'AdvancedSearch/k_xtso692i/?genres=drama',
-// }
-// mapSearchURLs.Adventure
-// mapSearchURLs.movieKind
-// mapSearchURLs[props.movieKind]
+  const handleSearchQuery = async (e) => {
+    e.preventDefault()
 
-// const mapTitles = {
-//   Adventure: 'Adventure',
-//   Drama: 'Drama',
-// }
+    const response = await fetch(
+      'https://imdb-api.com/en/API/SearchMovie/k_xtso692i/' + searchQuery,
+    )
+    if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+      setSearchMovieRowTitle(data)
+      setSearchMovieRow(data.results)
+    }
+  }
 
-// const title = mapTitles[props.movieKind];
-
-// const getMovies = async () =>
-// {
-//   const response = await fetch(`${https://imdb-api.com/en/API/}${mapSearchURLs[movieKind]}`)
-//     if (response.ok)
-//   {
-//       const data = await response.json()
-//       setMovies(data)
-//     }
-// }
-
-// const handleSearchQuery = async (e) => {
-//   e.preventDefault()
-
-//   const response = await fetch(
-//     'https://imdb-api.com/en/API/SearchMovie/k_xtso692i/' + searchQuery,
-//   )
-//   if (response.ok) {
-//     const data = await response.json()
-//     console.log(data)
-//     setSearchMovieRowTitle(data)
-//     setSearchMovieRow(data.results)
-//   }
-// }
-
-// return (
-//   <>
-{
-  /* <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 home-jumbotron">
-        <h1 className="mb-3">Unlimited movies, for movie lovers.</h1>
-
-        <h3>Watch anywhere. Cancel anytime.</h3>
-
+  return (
+    <>
+      <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 home-jumbotron">
+        <MyJumbotron />
         <Form
           className="d-flex justify-content-center mt-3"
           onSubmit={handleSearchQuery}
@@ -80,7 +54,7 @@
           <Form.Group className="mb-0">
             <Form.Control
               type="text"
-              placeholder="Movie title.."
+              placeholder="Movie title"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -89,13 +63,14 @@
             Search
           </Button>
         </Form>
-      </Jumbotron> */
-}
+      </Jumbotron>
 
-{
-  /* {!searchQuery ? (
+      {!searchQuery ? (
         <>
-          <MovieRow title="Best movies" movies={movieRow1.slice(0, 6)} />
+          <MovieRow
+            title={genre.charAt(0).toUpperCase() + genre.slice(1)}
+            movies={movieRow.slice(0, 18)}
+          />
         </>
       ) : (
         <MovieRow
@@ -103,10 +78,9 @@
           movies={searchMovieRow}
           searchResult={searchMovieRowTitle}
         />
-      )} */
+      )}
+    </>
+  )
 }
-//     </>
-//   )
-// }
 
-// export default Genre
+export default Genre
