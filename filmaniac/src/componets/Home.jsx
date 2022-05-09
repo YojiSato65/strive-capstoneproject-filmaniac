@@ -6,8 +6,8 @@ import MovieRow from './MovieRow'
 import MyJumbotron from './MyJumbotron'
 
 const Home = () => {
-  // const [movieRow1, setMovieRow1] = useState([])
-  // const [movieRow2, setMovieRow2] = useState([])
+  const [movieRow1, setMovieRow1] = useState([])
+  const [movieRow2, setMovieRow2] = useState([])
   const [movieRow3, setMovieRow3] = useState([])
   const [movieRow4, setMovieRow4] = useState([])
   const [movieRow5, setMovieRow5] = useState([])
@@ -22,17 +22,22 @@ const Home = () => {
 
   const getMovies = () => {
     Promise.all([
-      // fetch('https://imdb-api.com/en/API/Top250Movies/k_xtso692i')
-      //   .then((response) => response.json())
-      //   .then((responseObject) => {
-      //     setMovieRow1(responseObject.items)
-      //   }),
-      // fetch('https://imdb-api.com/en/API/MostPopularMovies/k_xtso692i')
-      //   .then((response) => response.json())
-      //   .then((responseObject) => {
-      //     console.log(responseObject.items)
-      //     setMovieRow2(responseObject.items)
-      //   }),
+      fetch(
+        'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=fantasy&count=18',
+      )
+        .then((response) => response.json())
+        .then((responseObject) => {
+          console.log(responseObject.results)
+          setMovieRow1(responseObject.results)
+        }),
+      fetch(
+        'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=documentary&count=18',
+      )
+        .then((response) => response.json())
+        .then((responseObject) => {
+          console.log(responseObject.results)
+          setMovieRow2(responseObject.results)
+        }),
       fetch(
         'https://imdb-api.com/API/AdvancedSearch/k_xtso692i/?genres=action&count=18',
       )
@@ -98,6 +103,22 @@ const Home = () => {
 
       {!searchMovieRowTitle ? (
         <>
+          <MovieCarouselRow
+            title="Fantasy"
+            nestedMovies={[
+              movieRow1.slice(0, 6),
+              movieRow1.slice(6, 12),
+              movieRow1.slice(12, 18),
+            ]}
+          />
+          <MovieCarouselRow
+            title="Documentary"
+            nestedMovies={[
+              movieRow2.slice(0, 6),
+              movieRow2.slice(6, 12),
+              movieRow2.slice(12, 18),
+            ]}
+          />
           <MovieCarouselRow
             title="Action"
             nestedMovies={[

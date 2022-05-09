@@ -37,8 +37,6 @@ const MyFooter = () => {
           <p>Filmaniac Holdings, Inc.</p>
         </div>
       </Row>
-      <br />
-      <br />
     </Container>
   )
 }

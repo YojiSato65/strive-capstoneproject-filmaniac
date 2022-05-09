@@ -1,6 +1,6 @@
+import '../styles/movieRow.css'
 import { useState } from 'react'
 import { Container, Row, Col, Image, Carousel } from 'react-bootstrap'
-import '../styles/movieRow.css'
 import { useDispatch } from 'react-redux'
 import { movieSelectAction } from '../redux/actions'
 import MyModal from './MyModal'
@@ -19,7 +19,7 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult }) => {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="pb-5">
         {!searchResult ? (
           <h3 className="mb-3 ml-1">{title}</h3>
         ) : (

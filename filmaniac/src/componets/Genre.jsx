@@ -1,7 +1,7 @@
+import '../styles/home.css'
 import { useState, useEffect } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import '../styles/home.css'
 import MovieRow from './MovieRow'
 import MyJumbotron from './MyJumbotron'
 

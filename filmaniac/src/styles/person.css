@@ -1,5 +1,5 @@
 .person-jumbotron {
-  height: 50vh;
+  height: 60vh;
   color: white;
   position: relative;
   background-color: transparent !important;
@@ -9,9 +9,9 @@
 .person-jumbotron::before {
   content: '';
   background-image: url('https://images.pexels.com/photos/275200/pexels-photo-275200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-  background-position-y: 574px;
+  background-position-y: 600px;
   background-size: cover;
-  filter: brightness(40%);
+  filter: brightness(30%);
   position: absolute;
   top: 0;
   bottom: 0;

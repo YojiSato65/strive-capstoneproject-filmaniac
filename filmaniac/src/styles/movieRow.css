@@ -10,7 +10,8 @@
   height: 100%;
 }
 
-.movie-col img {
+.movie-col img,
+.play-div {
   transition: transform 0.1s;
 }
 
@@ -57,6 +58,11 @@
   margin-left: auto;
 }
 
+.play-div:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+
 hr {
   background-color: rgb(158, 158, 158);
   margin-top: 0%;
@@ -69,4 +75,26 @@ hr {
 
 .award-p {
   font-size: 1.1em;
+}
+
+.modal-name {
+  color: rgb(238, 238, 238);
+}
+.modal-name:hover {
+  color: rgb(156, 156, 156);
+  text-decoration: none;
+}
+
+.carousel-control-next {
+  width: 2%;
+  right: 0;
+}
+.carousel-control-prev {
+  width: 2%;
+  left: 0;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  width: 30px;
+  height: 30px;
 }

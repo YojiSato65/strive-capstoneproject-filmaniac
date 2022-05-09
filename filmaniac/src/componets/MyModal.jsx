@@ -1,6 +1,6 @@
+import '../styles/movieRow.css'
 import { useState } from 'react'
 import { Image, Modal, Badge } from 'react-bootstrap'
-import '../styles/movieRow.css'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   movieSelectAction,
@@ -128,16 +128,24 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
               )}
 
               <hr />
-              <p>
-                Director: <b>{movieDetail.directors}</b>
-              </p>
+              <div>
+                Director:{' '}
+                {movieDetail.directorList &&
+                  movieDetail.directorList.slice(0, 3).map((director) => (
+                    <p className="d-inline-block mr-2 mb-1" key={director.id}>
+                      <Link to={`/${director.id}`} className="modal-name">
+                        <b>{director.name}</b>
+                      </Link>
+                    </p>
+                  ))}
+              </div>
               <div>
                 Star:{' '}
                 {movieDetail.actorList &&
                   movieDetail.actorList.slice(0, 3).map((actor) => (
                     <div key={actor.id}>
-                      <p className="d-inline-block mr-2 mb-1">
-                        <Link to={`/${actor.id}`}>
+                      <p className="d-inline-block mr-2 mb-1 modal-name">
+                        <Link to={`/${actor.id}`} className="modal-name">
                           <b>{actor.name}</b>
                         </Link>
                       </p>
