@@ -60,6 +60,7 @@
 
 .play-div:hover {
   color: #ffc107;
+  background-color: black;
   transform: scale(1.1);
 }
 

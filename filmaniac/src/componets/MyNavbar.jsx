@@ -23,16 +23,27 @@ const MyNavbar = () => {
               id="basic-nav-dropdown"
               className="d-inline-block"
             >
+              <NavDropdown.Item href="/genre/action">Action</NavDropdown.Item>
               <NavDropdown.Item href="/genre/adventure">
                 Adventure
               </NavDropdown.Item>
-              <NavDropdown.Item href="/genre/comedy">Comedy</NavDropdown.Item>
-              <NavDropdown.Item href="/genre/horror">Horror</NavDropdown.Item>
-              <NavDropdown.Item href="/genre/family">Family</NavDropdown.Item>
-              <NavDropdown.Item href="/genre/romance">Romance</NavDropdown.Item>
               <NavDropdown.Item href="/genre/animation">
                 Animation
               </NavDropdown.Item>
+              <NavDropdown.Item href="/genre/biography">
+                Biography
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/genre/comedy">Comedy</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/crime">Crime</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/documentary">
+                Documentary
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/genre/drama">Drama</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/family">Family</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/fantasy">Fantasy</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/horror">Horror</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/musical">Musical</NavDropdown.Item>
+              <NavDropdown.Item href="/genre/romance">Romance</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/crew">Crew</Nav.Link>
             <NavDropdown

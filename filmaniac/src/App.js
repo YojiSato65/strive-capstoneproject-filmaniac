@@ -6,7 +6,7 @@ import Genre from './componets/Genre'
 import Person from './componets/favorites/Person'
 import SearchPerson from './componets/SearchPerson'
 import PersonDetail from './componets/PersonDetail'
-import Favorite from './componets/Favorite'
+import Favorite from './componets/favorites/Movie'
 import MyNavbar from './componets/MyNavbar';
 import MyFooter from './componets/MyFooter';
 // import Adventure from './componets/genres/Adventure';

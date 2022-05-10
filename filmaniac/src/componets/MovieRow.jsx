@@ -27,7 +27,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
         )}
         <Row>
           {movies.map((movie) => (
-            <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+            <Col xs={6} md={2} key={movie.id} className="movie-col mb-5">
               <Image
                 src={movie.image}
                 rounded

@@ -32,7 +32,7 @@ const PersonDetail = () => {
 
   useEffect(() => {
     getPersonDetail()
-  }, [])
+  }, [personId])
 
   const getPersonDetail = async () => {
     const response = await fetch(
@@ -49,13 +49,6 @@ const PersonDetail = () => {
     handleShow()
     dispatch(movieSelectAction(movie))
   }
-
-  // const favPerson = favPersonList.find((person) => person?.id === personId)
-
-  // console.log('======', detailPerson, detailPerson.length)
-  // if (detailPerson === undefined) {
-  //   return <p style={{ color: 'white' }}>unko</p>
-  // }
 
   return (
     <>

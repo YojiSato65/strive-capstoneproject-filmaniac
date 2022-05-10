@@ -1,11 +1,11 @@
-import '../styles/home.css'
+import '../../styles/home.css'
 import { useState } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { movieSelectAction } from '../redux/actions'
-import MyModal from './MyModal'
+import { movieSelectAction } from '../../redux/actions'
+import MyModal from '../MyModal'
 
-const Favorite = () => {
+const Movie = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -49,4 +49,4 @@ const Favorite = () => {
   )
 }
 
-export default Favorite
+export default Movie

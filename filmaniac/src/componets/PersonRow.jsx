@@ -35,52 +35,43 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
   console.log('searchResult', people)
 
   return (
-    <>
-      <Container fluid className="person-container">
-        {searchPersonRowTitle ? (
-          <h3 className="mb-3 ml-1">Search Result For: {title}</h3>
-        ) : (
-          <></>
-        )}
-        <Row>
-          {people.map((person) => (
-            <Col xs={6} md={2} key={person.id} className="mb-3 person-col">
-              <Link to={'/' + person.id}>
-                <Image
-                  src={person.image}
-                  roundedCircle
-                  width="200"
-                  height="200"
-                  alt="movie-image"
-                  className="person-image"
-                  onClick={() => dispatch(personSelectAction(person))}
-                />
-              </Link>
-              <h4 className="text-center mt-1">{person.title}</h4>
-              {isPersonSelected(person.id) ? (
-                <BsFillHeartFill
-                  className="heart-icon"
-                  onClick={() =>
-                    // console.log('selectedmovie', selectedMovie) ||
-                    // handleSelectPerson
-                    dispatch(personRemoveFromFavsAction(person))
-                  }
-                />
-              ) : (
-                <BsHeart
-                  className="heart-icon"
-                  onClick={() =>
-                    // handleDeselectPerson
-                    dispatch(personAddToFavsAction(person))
-                  }
-                />
-              )}
-              <p className="text-center">{role(person.description)}</p>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </>
+    <Container fluid className="person-container">
+      {searchPersonRowTitle ? (
+        <h3 className="mb-3 ml-1">Search Result For: {title}</h3>
+      ) : (
+        <></>
+      )}
+      <Row>
+        {people.map((person) => (
+          <Col xs={6} md={2} key={person.id} className="mb-3 person-col">
+            <Link to={'/' + person.id}>
+              <Image
+                src={person.image}
+                roundedCircle
+                width="200"
+                height="200"
+                alt="movie-image"
+                className="person-image"
+                onClick={() => dispatch(personSelectAction(person))}
+              />
+            </Link>
+            <h4 className="text-center mt-1">{person.title}</h4>
+            {isPersonSelected(person.id) ? (
+              <BsFillHeartFill
+                className="heart-icon"
+                onClick={() => dispatch(personRemoveFromFavsAction(person))}
+              />
+            ) : (
+              <BsHeart
+                className="heart-icon"
+                onClick={() => dispatch(personAddToFavsAction(person))}
+              />
+            )}
+            <p className="text-center">{role(person.description)}</p>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   )
 }
 
