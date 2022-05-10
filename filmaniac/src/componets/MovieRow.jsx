@@ -23,7 +23,7 @@ const MovieRow = ({ title, movies, searchResult }) => {
         {!searchResult ? (
           <h3 className="mb-3 ml-1">{title}</h3>
         ) : (
-          <h3 className="mb-3 ml-1">Search results for: {title}</h3>
+          <h3 className="mb-3 ml-1">Search Results For: {title}</h3>
         )}
         <Row>
           {movies.map((movie) => (

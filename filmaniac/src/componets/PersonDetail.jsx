@@ -18,13 +18,11 @@ const PersonDetail = () => {
 
   const [detailPerson, setDetailPerson] = useState({})
 
-  const selectedPerson = useSelector((state) => state.person.selectedPerson)
+  // const selectedPerson = useSelector((state) => state.person.selectedPerson)
   const favPersonList = useSelector((state) => state.person.favorites)
   const dispatch = useDispatch()
 
   const { personId } = useParams()
-  console.log('personId', personId)
-  console.log('selectedPerson', selectedPerson)
 
   const isPersonSelected = favPersonList.some(
     (element) => element?.id === personId,
@@ -50,6 +48,20 @@ const PersonDetail = () => {
     dispatch(movieSelectAction(movie))
   }
 
+  const setRole = (role) => {
+    if (role.includes('Actor')) {
+      return 'Actor'
+    } else if (role.includes('Actress')) {
+      return 'Actress'
+    } else if (role.includes('Writer')) {
+      return 'Writer'
+    } else if (role.includes('Director')) {
+      return 'Director'
+    } else {
+      return 'Crew'
+    }
+  }
+
   return (
     <>
       <Container fluid className="mt-5 px-5 person-detail-container">
@@ -71,6 +83,7 @@ const PersonDetail = () => {
                   {detailPerson.name}
                 </h3>
                 <p className="mt-4 ml-2">- {detailPerson.role}</p>
+                {/* <p className="mt-4 ml-2">- {setRole(detailPerson.role)}</p> */}
                 {isPersonSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"

@@ -14,14 +14,30 @@ const Person = () => {
 
   const dispatch = useDispatch()
 
-  const role = (description = '') => {
+  const setRoleFromRow = (description = '', role) => {
     if (description.includes('Actor')) {
       return 'Actor'
     } else if (description.includes('Actress')) {
       return 'Actress'
     } else if (description.includes('Writer')) {
-      return 'Writer'
+      return 'Director'
     } else if (description.includes('Director')) {
+      return 'Director'
+    } else {
+      return 'Crew'
+    }
+  }
+
+  const setRoleFromDetail = (role = '') => {
+    if (role.includes('Director')) {
+      return 'Director'
+    } else if (role.includes('Actor')) {
+      return 'Actor'
+    } else if (role.includes('Actress')) {
+      return 'Actress'
+    } else if (role.includes('Producer')) {
+      return 'Producer'
+    } else if (role.includes('Writer')) {
       return 'Director'
     } else {
       return 'Crew'
@@ -53,7 +69,7 @@ const Person = () => {
               </Link>
               <div>
                 <h5 className="text-center mt-3 d-inline-block mr-2">
-                  {favPerson?.title}
+                  {favPerson?.title || favPerson?.name}
                 </h5>
                 <BsFillHeartFill
                   className="heart-icon"
@@ -62,7 +78,11 @@ const Person = () => {
                     dispatch(personRemoveFromFavsAction(favPerson))
                   }
                 />
-                <p>{role(favPerson?.description)}</p>
+                <p>
+                  {favPerson.description
+                    ? setRoleFromRow(favPerson?.description)
+                    : favPerson.role}
+                </p>
               </div>
             </Col>
           ))}
