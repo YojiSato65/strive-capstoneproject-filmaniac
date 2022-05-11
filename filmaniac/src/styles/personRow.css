@@ -16,7 +16,10 @@
   transform: scale(1.1);
 }
 
-.person-container,
-.liked-person-container {
+.person-container {
   padding-top: 5em;
+}
+
+.liked-person-container {
+  padding-top: 7em;
 }

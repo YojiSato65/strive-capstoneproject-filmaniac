@@ -10,6 +10,9 @@ import {
 import { useEffect } from 'react'
 import { BsHeart, BsFillHeartFill, BsPlayCircle } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
   const selectedMovie = useSelector((state) => state.movie.selectedMovie)
@@ -44,6 +47,40 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
   const isMovieSelected = favMovieList.some(
     (element) => element.id === selectedMovie.id,
   )
+
+  const handleAddToFav = () => {
+    dispatch(movieAddToFavsAction(selectedMovie))
+    notifyAdded()
+  }
+
+  const handleRemoveFromFav = () => {
+    dispatch(movieRemoveFromFavsAction(selectedMovie))
+    notifyRemoved()
+  }
+
+  const notifyAdded = () =>
+    toast.warn('Added to favorite', {
+      position: 'bottom-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
+
+  const notifyRemoved = () =>
+    toast.warn('Removed from favorite', {
+      position: 'bottom-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
 
   return (
     <>
@@ -91,18 +128,12 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 {isMovieSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
-                    onClick={() =>
-                      // console.log('selectedmovie', selectedMovie) ||
-                      dispatch(movieRemoveFromFavsAction(selectedMovie))
-                    }
+                    onClick={handleRemoveFromFav}
                   />
                 ) : (
-                  <BsHeart
-                    className="heart-icon"
-                    onClick={() =>
-                      dispatch(movieAddToFavsAction(selectedMovie))
-                    }
-                  />
+                  <>
+                    <BsHeart className="heart-icon" onClick={handleAddToFav} />
+                  </>
                 )}
               </div>
               <p className="mb-1 award-p">
@@ -165,6 +196,17 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
           </div>
         </Modal.Body>
       </Modal>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

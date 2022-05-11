@@ -1,9 +1,11 @@
+import '../styles/home.css'
 import { useState, useEffect } from 'react'
 import { Jumbotron, Button, Form } from 'react-bootstrap'
-import '../styles/home.css'
+import { useDispatch, useSelector } from 'react-redux'
 import MovieCarouselRow from './MovieCarouselRow'
 import MovieRow from './MovieRow'
 import MyJumbotron from './MyJumbotron'
+import { getMovieLoadingAction } from '../redux/actions'
 
 const Home = () => {
   const [movieRow1, setMovieRow1] = useState([])
@@ -15,6 +17,11 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
   const [searchMovieRow, setSearchMovieRow] = useState([])
+
+  // const areMoviesLoading = useSelector((state) => state.movie.isLoading)
+  const dispatch = useDispatch()
+
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getMovies()
@@ -62,7 +69,7 @@ const Home = () => {
           console.log(responseObject.results)
           setMovieRow5(responseObject.results)
         }),
-    ])
+    ]).then(setIsLoading(false))
   }
 
   const handleSearchQuery = async (e) => {
@@ -73,9 +80,10 @@ const Home = () => {
     )
     if (response.ok) {
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       setSearchMovieRowTitle(data)
       setSearchMovieRow(data.results)
+      dispatch(getMovieLoadingAction())
     }
   }
 
@@ -110,6 +118,7 @@ const Home = () => {
               movieRow1.slice(6, 12),
               movieRow1.slice(12, 18),
             ]}
+            isLoading={isLoading}
           />
           <MovieCarouselRow
             title="Documentary"
@@ -149,6 +158,7 @@ const Home = () => {
           title={searchMovieRowTitle.expression}
           movies={searchMovieRow}
           searchResult={searchMovieRowTitle}
+          isLoading={isLoading}
         />
       )}
     </>

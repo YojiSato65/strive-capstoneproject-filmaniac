@@ -23,20 +23,26 @@ const Movie = () => {
     <>
       <Container fluid className="fav-container">
         <>
-          <h3 className="mb-3 ml-1">Movies you liked</h3>
-          <Row>
-            {likedMovies.map((movie) => (
-              <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
-                <Image
-                  src={movie.image}
-                  rounded
-                  alt="movie-image"
-                  className="mx-1"
-                  onClick={() => handleClickImage(movie)}
-                />
-              </Col>
-            ))}
-          </Row>
+          <h3 className="mb-3">Movies you liked</h3>
+          {!likedMovies.length ? (
+            <div style={{ height: '450px', backgroundColor: '#050505' }}>
+              <p className="pt-3">Hasn't been added yet.</p>
+            </div>
+          ) : (
+            <Row>
+              {likedMovies.map((movie) => (
+                <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+                  <Image
+                    src={movie.image}
+                    rounded
+                    alt="movie-image"
+                    className="mx-1"
+                    onClick={() => handleClickImage(movie)}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
         </>
       </Container>
       <MyModal

@@ -1,11 +1,11 @@
 import '../styles/movieRow.css'
 import { useState } from 'react'
-import { Container, Row, Col, Image, Carousel } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { Container, Row, Col, Image, Carousel, Spinner } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
 import { movieSelectAction } from '../redux/actions'
 import MyModal from './MyModal'
 
-const MovieCarouselRow = ({ title, nestedMovies, searchResult }) => {
+const MovieCarouselRow = ({ title, nestedMovies, searchResult, isLoading }) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -17,18 +17,24 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult }) => {
     dispatch(movieSelectAction(movie))
   }
 
+  const Spinner = require('react-spinkit')
+
   return (
     <>
-      <Container fluid className="pb-5">
-        {!searchResult ? (
-          <h3 className="mb-3 ml-1">{title}</h3>
-        ) : (
-          <h3 className="mb-3 ml-1">Search results for: {title}</h3>
-        )}
-        <Carousel indicators={false} interval={null}>
-          {nestedMovies.map((movies) => {
-            return (
-              <Carousel.Item>
+      {isLoading ? (
+        <>
+          <Spinner animation="grow" />
+        </>
+      ) : (
+        <Container fluid className="pb-5">
+          {!searchResult ? (
+            <h3 className="mb-3 ml-1">{title}</h3>
+          ) : (
+            <h3 className="mb-3 ml-1">Search results for: {title}</h3>
+          )}
+          <Carousel indicators={false} interval={null}>
+            {nestedMovies.map((movies) => (
+              <Carousel.Item key={movies.key}>
                 <Row>
                   {movies.map((movie) => (
                     <>
@@ -50,10 +56,10 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult }) => {
                   ))}
                 </Row>
               </Carousel.Item>
-            )
-          })}
-        </Carousel>
-      </Container>
+            ))}
+          </Carousel>
+        </Container>
+      )}
       <MyModal
         handleClickImage={handleClickImage}
         show={show}

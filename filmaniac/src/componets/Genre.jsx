@@ -12,6 +12,8 @@ const Genre = () => {
   const [searchMovieRowTitle, setSearchMovieRowTitle] = useState('')
   const [searchMovieRow, setSearchMovieRow] = useState([])
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const { genre } = useParams()
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const Genre = () => {
     if (response.ok) {
       const data = await response.json()
       setMovieRow(data.results)
-      console.log('movieRow', movieRow)
+      setIsLoading(false)
     }
   }
 
@@ -65,11 +67,12 @@ const Genre = () => {
         </Form>
       </Jumbotron>
 
-      {!searchQuery ? (
+      {!searchMovieRowTitle ? (
         <>
           <MovieRow
             title={genre.charAt(0).toUpperCase() + genre.slice(1)}
             movies={movieRow.slice(0, 18)}
+            isLoading={isLoading}
           />
         </>
       ) : (

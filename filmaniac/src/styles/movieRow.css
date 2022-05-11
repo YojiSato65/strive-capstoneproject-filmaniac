@@ -99,3 +99,16 @@ hr {
   width: 30px;
   height: 30px;
 }
+
+.sk-spinner {
+  color: rgb(255, 193, 7) !important;
+  background-color: rgb(5, 5, 5);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* padding-top: 3em; */
+}
+.sk-spinner div {
+  width: 30px !important;
+  height: 30px !important;
+}

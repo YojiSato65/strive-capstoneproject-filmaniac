@@ -1,6 +1,7 @@
 export const MOVIE_ADD_TO_FAVS = 'MOVIE_ADD_TO_FAVS'
 export const MOVIE_REMOVE_FROM_FAVS = 'MOVIE_REMOVE_FROM_FAVS'
 export const MOVIE_SELECT = 'MOVIE_SELECT'
+export const GET_MOVIE_LOADING = 'GET_MOVIE_LOADING'
 
 export const PERSON_ADD_TO_FAVS = 'PERSON_ADD_TO_FAVS'
 export const PERSON_REMOVE_FROM_FAVS = 'PERSON_REMOVE_FROM_FAVS'
@@ -19,6 +20,11 @@ export const movieRemoveFromFavsAction = (movie) => ({
 export const movieSelectAction = (movie) => ({
     type: MOVIE_SELECT,
     payload: movie,
+})
+
+export const getMovieLoadingAction = () =>
+({
+    type: GET_MOVIE_LOADING,
 })
 
 export const personAddToFavsAction = (person) => ({

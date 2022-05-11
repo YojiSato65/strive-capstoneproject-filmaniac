@@ -13,7 +13,8 @@ const composeFunctionThatAlwaysWorks =
 export const initialState = {
     movie: {
         favorites: [],
-        selectedMovie: null
+        selectedMovie: null,
+        isLoading: true
     },
     person: {
         favorites: [],

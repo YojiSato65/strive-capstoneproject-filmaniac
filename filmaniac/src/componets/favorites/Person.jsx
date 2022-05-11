@@ -28,65 +28,71 @@ const Person = () => {
     }
   }
 
-  const setRoleFromDetail = (role = '') => {
-    if (role.includes('Director')) {
-      return 'Director'
-    } else if (role.includes('Actor')) {
-      return 'Actor'
-    } else if (role.includes('Actress')) {
-      return 'Actress'
-    } else if (role.includes('Producer')) {
-      return 'Producer'
-    } else if (role.includes('Writer')) {
-      return 'Director'
-    } else {
-      return 'Crew'
-    }
-  }
+  // const setRoleFromDetail = (role = '') => {
+  //   if (role.includes('Director')) {
+  //     return 'Director'
+  //   } else if (role.includes('Actor')) {
+  //     return 'Actor'
+  //   } else if (role.includes('Actress')) {
+  //     return 'Actress'
+  //   } else if (role.includes('Producer')) {
+  //     return 'Producer'
+  //   } else if (role.includes('Writer')) {
+  //     return 'Director'
+  //   } else {
+  //     return 'Crew'
+  //   }
+  // }
 
   return (
     <>
       <Container fluid className="px-5 liked-person-container">
         <h3 className="mb-3">Your Favorite Crew</h3>
-        <Row>
-          {favPersonList.map((favPerson) => (
-            <Col
-              xs={6}
-              md={2}
-              className="d-flex flex-column m-3"
-              key={favPerson?.id}
-            >
-              <Link to={'/' + favPerson?.id}>
-                <Image
-                  src={favPerson?.image}
-                  roundedCircle
-                  width="200"
-                  height="200"
-                  alt="movie-image"
-                  className="fav-person-image"
-                  onClick={() => dispatch(personSelectAction(favPerson))}
-                />
-              </Link>
-              <div>
-                <h5 className="text-center mt-3 d-inline-block mr-2">
-                  {favPerson?.title || favPerson?.name}
-                </h5>
-                <BsFillHeartFill
-                  className="heart-icon"
-                  onClick={() =>
-                    // console.log('selectedmovie', selectedMovie) ||
-                    dispatch(personRemoveFromFavsAction(favPerson))
-                  }
-                />
-                <p>
-                  {favPerson.description
-                    ? setRoleFromRow(favPerson?.description)
-                    : favPerson.role}
-                </p>
-              </div>
-            </Col>
-          ))}
-        </Row>
+        {!favPersonList.length ? (
+          <div style={{ height: '450px', backgroundColor: '#050505' }}>
+            <p className="pt-3">Hasn't been added yet.</p>
+          </div>
+        ) : (
+          <Row>
+            {favPersonList.map((favPerson) => (
+              <Col
+                xs={6}
+                md={2}
+                className="d-flex flex-column m-3"
+                key={favPerson?.id}
+              >
+                <Link to={'/' + favPerson?.id}>
+                  <Image
+                    src={favPerson?.image}
+                    roundedCircle
+                    width="200"
+                    height="200"
+                    alt="movie-image"
+                    className="fav-person-image"
+                    onClick={() => dispatch(personSelectAction(favPerson))}
+                  />
+                </Link>
+                <div>
+                  <h5 className="text-center mt-3 d-inline-block mr-2">
+                    {favPerson?.title || favPerson?.name}
+                  </h5>
+                  <BsFillHeartFill
+                    className="heart-icon"
+                    onClick={() =>
+                      // console.log('selectedmovie', selectedMovie) ||
+                      dispatch(personRemoveFromFavsAction(favPerson))
+                    }
+                  />
+                  <p>
+                    {favPerson.description
+                      ? setRoleFromRow(favPerson?.description)
+                      : favPerson.role}
+                  </p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        )}
       </Container>
     </>
   )
