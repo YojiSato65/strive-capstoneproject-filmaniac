@@ -9,6 +9,8 @@ import {
   personRemoveFromFavsAction,
 } from '../redux/actions'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const PersonRow = ({ title, people, searchPersonRowTitle }) => {
   const favPersonList = useSelector((state) => state.person.favorites)
@@ -32,46 +34,101 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
       return 'Crew'
     }
   }
-  console.log('searchResult', people)
+
+  const handleAddToFav = (person) => {
+    dispatch(personAddToFavsAction(person))
+    notifyAdded()
+    console.log('add to fav action dispathed')
+  }
+
+  const handleRemoveFromFav = (person) => {
+    dispatch(personRemoveFromFavsAction(person))
+    notifyRemoved()
+    console.log('remove from fav action dispathed')
+  }
+
+  const notifyAdded = () =>
+    toast.warn('Added to favorite', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
+
+  const notifyRemoved = () =>
+    toast.warn('Removed from favorite', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
 
   return (
-    <Container fluid className="person-container">
-      {searchPersonRowTitle ? (
-        <h3 className="mb-3 ml-1">Search Result For: {title}</h3>
-      ) : (
-        <></>
-      )}
-      <Row>
-        {people.map((person) => (
-          <Col xs={6} md={2} key={person.id} className="mb-3 person-col">
-            <Link to={'/' + person.id}>
-              <Image
-                src={person.image}
-                roundedCircle
-                width="200"
-                height="200"
-                alt="movie-image"
-                className="person-image"
-                onClick={() => dispatch(personSelectAction(person))}
-              />
-            </Link>
-            <h4 className="text-center mt-1">{person.title}</h4>
-            {isPersonSelected(person.id) ? (
-              <BsFillHeartFill
-                className="heart-icon"
-                onClick={() => dispatch(personRemoveFromFavsAction(person))}
-              />
-            ) : (
-              <BsHeart
-                className="heart-icon"
-                onClick={() => dispatch(personAddToFavsAction(person))}
-              />
-            )}
-            <p className="text-center">{role(person.description)}</p>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <>
+      <Container fluid className="person-container">
+        {searchPersonRowTitle ? (
+          <h3 className="mb-5 ml-1">Search Result For: {title}</h3>
+        ) : (
+          <></>
+        )}
+        <Row>
+          {people.map((person) => (
+            <Col
+              xs={6}
+              md={2}
+              key={person.id}
+              className="person-col d-flex flex-column align-items-center"
+            >
+              <Link to={'/' + person.id}>
+                <Image
+                  src={person.image}
+                  roundedCircle
+                  width="200"
+                  height="200"
+                  alt="movie-image"
+                  className="person-search-image mb-4"
+                  onClick={() => dispatch(personSelectAction(person))}
+                />
+              </Link>
+              <div className="d-flex justify-content-center search-result-person-row">
+                <h6 className="mr-2 mt-2">{person.title}</h6>
+                {isPersonSelected(person.id) ? (
+                  <BsFillHeartFill
+                    className="heart-icon"
+                    onClick={() => handleRemoveFromFav(person)}
+                  />
+                ) : (
+                  <BsHeart
+                    className="heart-icon"
+                    onClick={() => handleAddToFav(person)}
+                  />
+                )}
+              </div>
+              <p>{role(person.description)}</p>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   )
 }
 

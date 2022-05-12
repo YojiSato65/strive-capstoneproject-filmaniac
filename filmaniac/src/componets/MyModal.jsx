@@ -60,7 +60,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
 
   const notifyAdded = () =>
     toast.warn('Added to favorite', {
-      position: 'bottom-center',
+      position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -72,7 +72,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
 
   const notifyRemoved = () =>
     toast.warn('Removed from favorite', {
-      position: 'bottom-center',
+      position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -163,7 +163,11 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 Director:{' '}
                 {movieDetail.directorList &&
                   movieDetail.directorList.slice(0, 3).map((director) => (
-                    <p className="d-inline-block mr-2 mb-1" key={director.id}>
+                    <p
+                      className="d-inline-block mr-2 mb-1"
+                      key={director.id}
+                      onClick={handleClose}
+                    >
                       <Link to={`/${director.id}`} className="modal-name">
                         <b>{director.name}</b>
                       </Link>
@@ -175,7 +179,10 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 {movieDetail.actorList &&
                   movieDetail.actorList.slice(0, 3).map((actor) => (
                     <div key={actor.id}>
-                      <p className="d-inline-block mr-2 mb-1 modal-name">
+                      <p
+                        className="d-inline-block mr-2 mb-1 modal-name"
+                        onClick={handleClose}
+                      >
                         <Link to={`/${actor.id}`} className="modal-name">
                           <b>{actor.name}</b>
                         </Link>
@@ -186,7 +193,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                         width="40"
                         height="40"
                         alt="movie-image"
-                        className="fav-person-image"
+                        className="modal-actor-image"
                       ></Image>
                     </div>
                   ))}
@@ -197,7 +204,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
         </Modal.Body>
       </Modal>
       <ToastContainer
-        position="bottom-center"
+        position="top-center"
         autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}

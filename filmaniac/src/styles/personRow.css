@@ -3,17 +3,27 @@
   color: rgb(239, 239, 239);
 }
 
+.person-col {
+  margin-bottom: 5em;
+  /* background-color: #151515;
+  border-radius: 5px; */
+}
+/* .person-col:hover {
+  margin-bottom: 5em;
+  background-color: #252525;
+} */
+
 .person-col img {
   object-fit: cover;
   object-position: top;
 }
 
 .person-col img {
-  transition: transform 0.1s;
+  transition: transform 0.2s;
 }
 
 .person-col img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .person-container {
@@ -22,4 +32,12 @@
 
 .liked-person-container {
   padding-top: 7em;
+}
+
+.search-result-person-row {
+  width: 100%;
+}
+
+h6 {
+  font-weight: 600;
 }

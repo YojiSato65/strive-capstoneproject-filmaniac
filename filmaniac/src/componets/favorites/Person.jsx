@@ -8,13 +8,15 @@ import {
   personRemoveFromFavsAction,
 } from '../../redux/actions'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Person = () => {
   const favPersonList = useSelector((state) => state.person.favorites)
 
   const dispatch = useDispatch()
 
-  const setRoleFromRow = (description = '', role) => {
+  const setRoleFromRow = (description = '') => {
     if (description.includes('Actor')) {
       return 'Actor'
     } else if (description.includes('Actress')) {
@@ -28,21 +30,23 @@ const Person = () => {
     }
   }
 
-  // const setRoleFromDetail = (role = '') => {
-  //   if (role.includes('Director')) {
-  //     return 'Director'
-  //   } else if (role.includes('Actor')) {
-  //     return 'Actor'
-  //   } else if (role.includes('Actress')) {
-  //     return 'Actress'
-  //   } else if (role.includes('Producer')) {
-  //     return 'Producer'
-  //   } else if (role.includes('Writer')) {
-  //     return 'Director'
-  //   } else {
-  //     return 'Crew'
-  //   }
-  // }
+  const handleRemoveFromFav = (person) => {
+    dispatch(personRemoveFromFavsAction(person))
+    notifyRemoved()
+    console.log('remove from fav action dispathed')
+  }
+
+  const notifyRemoved = () =>
+    toast.warn('Removed from favorite', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
 
   return (
     <>
@@ -78,10 +82,7 @@ const Person = () => {
                   </h5>
                   <BsFillHeartFill
                     className="heart-icon"
-                    onClick={() =>
-                      // console.log('selectedmovie', selectedMovie) ||
-                      dispatch(personRemoveFromFavsAction(favPerson))
-                    }
+                    onClick={() => handleRemoveFromFav(favPerson)}
                   />
                   <p>
                     {favPerson.description
@@ -94,6 +95,17 @@ const Person = () => {
           </Row>
         )}
       </Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

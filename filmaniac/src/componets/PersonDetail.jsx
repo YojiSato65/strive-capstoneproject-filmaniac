@@ -10,6 +10,8 @@ import {
   personRemoveFromFavsAction,
 } from '../redux/actions'
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const PersonDetail = () => {
   const [show, setShow] = useState(false)
@@ -48,79 +50,94 @@ const PersonDetail = () => {
     dispatch(movieSelectAction(movie))
   }
 
-  const setRole = (role) => {
-    if (role.includes('Actor')) {
-      return 'Actor'
-    } else if (role.includes('Actress')) {
-      return 'Actress'
-    } else if (role.includes('Writer')) {
-      return 'Writer'
-    } else if (role.includes('Director')) {
-      return 'Director'
-    } else {
-      return 'Crew'
-    }
+  const handleAddToFav = (person) => {
+    dispatch(personAddToFavsAction(person))
+    notifyAdded()
+    console.log('add to fav action dispathed')
   }
+
+  const handleRemoveFromFav = (person) => {
+    dispatch(personRemoveFromFavsAction(person))
+    notifyRemoved()
+    console.log('remove from fav action dispathed')
+  }
+
+  const notifyAdded = () =>
+    toast.warn('Added to favorite', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
+
+  const notifyRemoved = () =>
+    toast.warn('Removed from favorite', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: false,
+    })
 
   return (
     <>
-      <Container fluid className="mt-5 px-5 person-detail-container">
-        <Row className="jusify-conten-center">
-          <div className="d-flex align-items-center mb-3">
+      <Container fluid className="person-detail-container">
+        <Row className="jusify-conten-center align-items-center mb-3 py-4 person-detail-row">
+          <div className="d-flex align-items-center">
             <div>
               <Image
                 src={detailPerson.image}
-                roundedCircle
-                width="300"
-                height="300"
+                rounded
                 alt="director-image"
                 className="person-image mx-5"
               />
             </div>
-            <div>
+            <div className="mr-3 px-4">
               <div className="d-flex">
-                <h3 className="text-center mt-3 mb-3 d-inline-block mr-2">
+                <h3 className="text-center mb-3 d-inline-block mr-3">
                   {detailPerson.name}
                 </h3>
-                <p className="mt-4 ml-2">- {detailPerson.role}</p>
-                {/* <p className="mt-4 ml-2">- {setRole(detailPerson.role)}</p> */}
                 {isPersonSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
-                    onClick={() =>
-                      dispatch(personRemoveFromFavsAction(detailPerson))
-                    }
+                    onClick={() => handleRemoveFromFav(detailPerson)}
                   />
                 ) : (
                   <BsHeart
                     className="heart-icon"
-                    onClick={() =>
-                      dispatch(personAddToFavsAction(detailPerson))
-                    }
+                    onClick={() => handleAddToFav(detailPerson)}
                   />
                 )}
               </div>
+              <p>
+                <h5>{detailPerson.role}</h5>
+              </p>
               <p className="mb-2">
                 Awards:
                 <b> {detailPerson.awards}</b>
               </p>
-              <p className="mb-1">Birth date: {detailPerson.birthDate}</p>
-              <p>{detailPerson.summary}</p>
+              <p className="mb-2">Birth date: {detailPerson.birthDate}</p>
+              <p className="description">{detailPerson.summary}</p>
             </div>
           </div>
         </Row>
 
-        <h3 className="mt-5 mb-2">Known For</h3>
+        <h3 className="mt-5 mb-3">Known For</h3>
         <Row>
           {detailPerson.knownFor?.map((movie) => (
-            <Col xs={6} md={3} className="movie-col">
+            <Col xs={6} md={3}>
               <Image
                 src={movie.image}
                 rounded
-                width="200"
-                height="300"
                 alt="movie-image"
-                className="mb-2"
+                className="mb-2 person-detail-movie-image"
                 onClick={() => handleClickImage(movie)}
               />
               <h5 className="text-center">{movie.fullTitle}</h5>
@@ -133,6 +150,17 @@ const PersonDetail = () => {
         show={show}
         handleClose={handleClose}
         handleShow={handleShow}
+      />
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
     </>
   )

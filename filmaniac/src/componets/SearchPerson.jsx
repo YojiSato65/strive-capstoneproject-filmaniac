@@ -12,7 +12,7 @@ const SearchPerson = () => {
     e.preventDefault()
 
     const response = await fetch(
-      'https://imdb-api.com/en/API/SearchName/k_xtso692i/' + searchQuery,
+      `https://imdb-api.com/en/API/SearchName/k_xtso692i/${searchQuery}`,
     )
     if (response.ok) {
       const data = await response.json()
