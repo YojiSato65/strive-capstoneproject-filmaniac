@@ -48,7 +48,7 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
   }
 
   const notifyAdded = () =>
-    toast.warn('Added to favorite', {
+    toast.warn('Added to favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
@@ -60,7 +60,7 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
     })
 
   const notifyRemoved = () =>
-    toast.warn('Removed from favorite', {
+    toast.warn('Removed from favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,

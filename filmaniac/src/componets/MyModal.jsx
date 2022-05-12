@@ -59,7 +59,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
   }
 
   const notifyAdded = () =>
-    toast.warn('Added to favorite', {
+    toast.warn('Added to favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
@@ -71,7 +71,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
     })
 
   const notifyRemoved = () =>
-    toast.warn('Removed from favorite', {
+    toast.warn('Removed from favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,

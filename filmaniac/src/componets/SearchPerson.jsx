@@ -27,7 +27,7 @@ const SearchPerson = () => {
       <Jumbotron className="text-center d-flex flex-column justify-content-center mb-0 person-jumbotron">
         <h1 className="mb-3">Who are you searching for?</h1>
 
-        <h3>The movie lover's database and streaming website in one.</h3>
+        <h3>Find actors/actresses, directors and other crew members.</h3>
 
         <Form
           className="d-flex justify-content-center mt-3"

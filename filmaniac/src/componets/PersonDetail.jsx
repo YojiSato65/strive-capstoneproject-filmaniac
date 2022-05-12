@@ -63,7 +63,7 @@ const PersonDetail = () => {
   }
 
   const notifyAdded = () =>
-    toast.warn('Added to favorite', {
+    toast.warn('Added to favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
@@ -75,7 +75,7 @@ const PersonDetail = () => {
     })
 
   const notifyRemoved = () =>
-    toast.warn('Removed from favorite', {
+    toast.warn('Removed from favorites', {
       position: 'top-center',
       autoClose: 1500,
       hideProgressBar: false,
@@ -96,12 +96,12 @@ const PersonDetail = () => {
                 src={detailPerson.image}
                 rounded
                 alt="director-image"
-                className="person-image mx-5"
+                className="person-image ml-4"
               />
             </div>
-            <div className="mr-3 px-4">
+            <div className="mr-5 px-4">
               <div className="d-flex">
-                <h3 className="text-center mb-3 d-inline-block mr-3">
+                <h3 className="text-center mb-4 d-inline-block mr-3">
                   {detailPerson.name}
                 </h3>
                 {isPersonSelected ? (
