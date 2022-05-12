@@ -113,45 +113,20 @@ const Home = () => {
         <>
           <MovieCarouselRow
             title="Fantasy"
-            nestedMovies={[
-              movieRow1.slice(0, 6),
-              movieRow1.slice(6, 12),
-              movieRow1.slice(12, 18),
-            ]}
+            nestedMovies={
+              movieRow1
+              // [
+              // movieRow1.slice(0, 6),
+              // movieRow1.slice(6, 12),
+              // movieRow1.slice(12, 18),
+              // ]
+            }
             isLoading={isLoading}
           />
-          <MovieCarouselRow
-            title="Documentary"
-            nestedMovies={[
-              movieRow2.slice(0, 6),
-              movieRow2.slice(6, 12),
-              movieRow2.slice(12, 18),
-            ]}
-          />
-          <MovieCarouselRow
-            title="Action"
-            nestedMovies={[
-              movieRow3.slice(0, 6),
-              movieRow3.slice(6, 12),
-              movieRow3.slice(12, 18),
-            ]}
-          />
-          <MovieCarouselRow
-            title="Sci-fi"
-            nestedMovies={[
-              movieRow4.slice(0, 6),
-              movieRow4.slice(6, 12),
-              movieRow4.slice(12, 18),
-            ]}
-          />
-          <MovieCarouselRow
-            title="Drama"
-            nestedMovies={[
-              movieRow5.slice(0, 6),
-              movieRow5.slice(6, 12),
-              movieRow5.slice(12, 18),
-            ]}
-          />
+          <MovieCarouselRow title="Documentary" nestedMovies={movieRow2} />
+          <MovieCarouselRow title="Action" nestedMovies={movieRow3} />
+          <MovieCarouselRow title="Sci-fi" nestedMovies={movieRow4} />
+          <MovieCarouselRow title="Drama" nestedMovies={movieRow5} />
         </>
       ) : (
         <MovieRow

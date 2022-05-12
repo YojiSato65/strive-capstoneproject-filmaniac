@@ -119,12 +119,6 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
             <div>
               <div className="d-flex mb-2">
                 <h3 className="mr-3">{movieDetail.fullTitle}</h3>
-                {movieDetail.runtimeMins === null ? (
-                  <></>
-                ) : (
-                  <h5 className="mr-3 mt-2">{movieDetail.runtimeMins} mins</h5>
-                )}
-
                 {isMovieSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
@@ -136,7 +130,12 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   </>
                 )}
               </div>
-              <p className="mb-1 award-p">
+              {movieDetail.runtimeMins === null ? (
+                <></>
+              ) : (
+                <h6 className="mr-3 mb-3">{movieDetail.runtimeMins} mins</h6>
+              )}
+              <p className="mb-3 award-p">
                 <b>{movieDetail.awards}</b>
               </p>
               {movieDetail.imDbRating && (
@@ -159,9 +158,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
               )}
 
               <hr />
-              <div>
+              <div className="mb-1">
                 Director:{' '}
-                {movieDetail.directorList &&
+                {movieDetail.directorList === '' ? (
                   movieDetail.directorList.slice(0, 3).map((director) => (
                     <p
                       className="d-inline-block mr-2 mb-1"
@@ -172,7 +171,12 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                         <b>{director.name}</b>
                       </Link>
                     </p>
-                  ))}
+                  ))
+                ) : (
+                  <p className="d-inline-block mr-2 mb-1">
+                    Different by episode
+                  </p>
+                )}
               </div>
               <div>
                 Star:{' '}

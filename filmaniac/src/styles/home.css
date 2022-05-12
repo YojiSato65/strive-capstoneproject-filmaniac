@@ -11,7 +11,7 @@
   background-image: url('../assets/bg-image.jpg');
   background-position-y: 650px;
   background-size: cover;
-  filter: brightness(60%);
+  filter: brightness(50%);
   position: absolute;
   top: 0;
   bottom: 0;
