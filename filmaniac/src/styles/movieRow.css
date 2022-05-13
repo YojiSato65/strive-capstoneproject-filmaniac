@@ -117,3 +117,18 @@ hr {
   object-fit: cover;
   object-position: top;
 }
+
+.react-multiple-carousel__arrow {
+  z-index: 50 !important;
+}
+
+@media screen and (max-width: 463px) {
+  .movie-col {
+    background-color: pink;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 464px) {
+  .movie-col {
+    background-color: grey;
+  }
+}

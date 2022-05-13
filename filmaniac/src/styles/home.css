@@ -42,3 +42,64 @@
   min-height: 60vh;
   background-color: white;
 }
+
+@media screen and (max-width: 463px) {
+  .movie-col {
+    background-color: pink;
+  }
+
+  .home-jumbotron {
+    height: 40vh;
+    position: unset;
+  }
+
+  .home-jumbotron::before {
+    background-position-y: 450px;
+  }
+
+  .home-jumbotron h1 {
+    font-size: 1.7em;
+  }
+  .home-jumbotron h3 {
+    font-size: 1em;
+  }
+  .home-jumbotron button {
+    width: em;
+    font-size: 0.8em;
+    color: white;
+  }
+  .home-jumbotron input {
+    height: 2.5em;
+    width: 15em;
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 464px) {
+  .movie-col {
+    background-color: grey;
+  }
+
+  .home-jumbotron {
+    height: 40vh;
+  }
+
+  .home-jumbotron::before {
+    background-position-y: 350px;
+  }
+
+  .home-jumbotron h1 {
+    font-size: 2.5em;
+  }
+  .home-jumbotron h3 {
+    font-size: 1em;
+  }
+  .home-jumbotron button {
+    width: 5em;
+    font-size: 1em;
+    color: white;
+  }
+  .home-jumbotron input {
+    height: 3em;
+    width: 15em;
+  }
+}

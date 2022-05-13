@@ -2,3 +2,35 @@
   padding-top: 15em;
   padding-bottom: 2em;
 }
+
+.footer-row1,
+.footer-row2 {
+  justify-content: space-between;
+}
+
+.footer-container svg {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 463px) {
+  .footer-container {
+    padding-top: 5em;
+  }
+  .footer-container p {
+    font-size: 0.8em;
+  }
+  .footer-container svg {
+    font-size: 1.2em;
+  }
+
+  .footer-row1,
+  .footer-row2 {
+    justify-content: end;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 464px) {
+  .footer-container {
+    padding-top: 5em;
+  }
+}

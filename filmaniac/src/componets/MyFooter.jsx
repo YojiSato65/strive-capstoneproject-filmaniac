@@ -6,7 +6,7 @@ import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 const MyFooter = () => {
   return (
     <Container fluid className="footer-container">
-      <Row className="justify-content-between">
+      <Row className="footer-row1">
         <div className="d-flex">
           <p className="mx-2">App Setting</p>
           <p className="mx-2">About Filmaniac</p>
@@ -14,15 +14,15 @@ const MyFooter = () => {
           <p className="mx-2">Help Center</p>
         </div>
         <div>
-          <BsTwitter className="mx-2" style={{ fontSize: '1.5em' }} />
-          <BsInstagram className="mx-2" style={{ fontSize: '1.5em' }} />
-          <BsYoutube className="mx-2" style={{ fontSize: '1.5em' }} />
-          <BsFacebook className="mx-2" style={{ fontSize: '1.5em' }} />
+          <BsTwitter className="mx-2" />
+          <BsInstagram className="mx-2" />
+          <BsYoutube className="mx-2" />
+          <BsFacebook className="mx-2" />
         </div>
       </Row>
       <br />
       <br />
-      <Row className="justify-content-between">
+      <Row className="footer-row2">
         <div className="d-flex">
           <p className="mx-2">Company Profile</p>
           <p className="mx-2">Indication Required by Law</p>

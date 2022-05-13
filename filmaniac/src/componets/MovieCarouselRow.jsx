@@ -26,17 +26,17 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult, isLoading }) => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 6,
-      slidesToSlide: 6, // optional, default to 1.
+      slidesToSlide: 6,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 3,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
+      items: 2,
+      slidesToSlide: 1,
     },
   }
 
@@ -86,8 +86,8 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult, isLoading }) => {
             // showDots={false}
             responsive={responsive}
             // ssr={true} // means to render carousel on server-side.
-            // infinite={false}
-            // autoPlay={false}
+            infinite={false}
+            autoPlay={false}
             // autoPlaySpeed={3000}
             // keyBoardControl={true}
             // customTransition="all .5"
@@ -106,9 +106,8 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult, isLoading }) => {
                   src={movie.image}
                   rounded
                   alt="movie-image"
-                  className="mx-1"
+                  className="px-1"
                   onClick={() => handleClickImage(movie)}
-                  style={{ width: '250px', height: '350px' }}
                 />
               </>
             ))}
