@@ -83,7 +83,9 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
           {people.map((person) => (
             <Col
               xs={6}
-              md={2}
+              md={4}
+              lg={3}
+              xl={2}
               key={person.id}
               className="person-col d-flex flex-column align-items-center"
             >
@@ -91,8 +93,6 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
                 <Image
                   src={person.image}
                   roundedCircle
-                  width="200"
-                  height="200"
                   alt="movie-image"
                   className="person-search-image mb-4"
                   onClick={() => dispatch(personSelectAction(person))}

@@ -48,3 +48,84 @@
 .fav-person-image:hover {
   transform: scale(1.1);
 }
+
+.person-search-image {
+  height: 200px;
+  width: 200px;
+}
+
+@media screen and (max-width: 463px) {
+  .person-jumbotron {
+    height: 40vh;
+    /* position: unset; */
+    padding-bottom: 0;
+  }
+
+  .person-jumbotron::before {
+    background-position-y: 430px;
+  }
+
+  .person-jumbotron h1 {
+    font-size: 1.7em;
+  }
+  .person-jumbotron h3 {
+    font-size: 1em;
+  }
+  .person-jumbotron button {
+    width: em;
+    font-size: 0.8em;
+    color: white;
+  }
+  .person-jumbotron input {
+    height: 2.5em;
+    width: 15em;
+    font-size: 0.8em;
+  }
+
+  .person-container {
+    min-height: 15em;
+  }
+
+  .heart-icon {
+    font-size: 1.2em;
+  }
+  .person-search-image {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 464px) {
+  .person-jumbotron {
+    height: 40vh;
+    padding-bottom: 0;
+  }
+
+  .person-jumbotron::before {
+    background-position-y: 400px;
+  }
+
+  .person-jumbotron h1 {
+    font-size: 2.5em;
+  }
+  .person-jumbotron h3 {
+    font-size: 1em;
+  }
+  .person-jumbotron button {
+    width: 5em;
+    font-size: 1em;
+    color: white;
+  }
+  .person-jumbotron input {
+    height: 3em;
+    width: 15em;
+  }
+
+  .person-container {
+    min-height: 22em;
+  }
+
+  .heart-icon {
+    font-size: 1.2em;
+  }
+}

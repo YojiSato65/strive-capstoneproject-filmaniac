@@ -44,17 +44,13 @@
 }
 
 @media screen and (max-width: 463px) {
-  .movie-col {
-    background-color: pink;
-  }
-
   .home-jumbotron {
     height: 40vh;
     position: unset;
   }
 
   .home-jumbotron::before {
-    background-position-y: 450px;
+    background-position-y: 500px;
   }
 
   .home-jumbotron h1 {
@@ -75,10 +71,6 @@
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 464px) {
-  .movie-col {
-    background-color: grey;
-  }
-
   .home-jumbotron {
     height: 40vh;
   }

@@ -1,6 +1,6 @@
 import '../styles/movieRow.css'
 import { useState } from 'react'
-import { Image, Modal, Badge } from 'react-bootstrap'
+import { Image, Modal, Badge, Container, Row, Col } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   movieSelectAction,
@@ -83,7 +83,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
     })
 
   return (
-    <>
+    <Container>
       <Modal
         show={show}
         onHide={handleClose}
@@ -160,11 +160,10 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   <p className="d-inline-block">/100</p>
                 </>
               )}
-
               <hr />
-              <div className="mb-1">
+              <div className="mb-2">
                 Director:{' '}
-                {movieDetail.directorList === '' ? (
+                {movieDetail.directorList ? (
                   movieDetail.directorList.slice(0, 3).map((director) => (
                     <p
                       className="d-inline-block mr-2 mb-1"
@@ -177,16 +176,14 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                     </p>
                   ))
                 ) : (
-                  <p className="d-inline-block mr-2 mb-1">
-                    Different by episode
-                  </p>
+                  <p>No result</p>
                 )}
               </div>
-              <div>
-                Star:{' '}
+              Star:{' '}
+              <Row className="star-row">
                 {movieDetail.actorList &&
-                  movieDetail.actorList.slice(0, 3).map((actor) => (
-                    <div key={actor.id}>
+                  movieDetail.actorList.slice(0, 4).map((actor) => (
+                    <Col md={6} key={actor.id} className="mb-2">
                       <p
                         className="d-inline-block mr-2 mb-1 modal-name"
                         onClick={handleClose}
@@ -203,9 +200,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                         alt="movie-image"
                         className="modal-actor-image"
                       ></Image>
-                    </div>
+                    </Col>
                   ))}
-              </div>
+              </Row>
               <p className="mt-2 modal-desctiption">
                 Description: {movieDetail.plot}
               </p>
@@ -224,7 +221,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
         draggable
         pauseOnHover
       />
-    </>
+    </Container>
   )
 }
 
