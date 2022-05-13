@@ -118,7 +118,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
             </div>
             <div>
               <div className="d-flex mb-2">
-                <h3 className="mr-3">{movieDetail.fullTitle}</h3>
+                <h3 className="mr-3 modal-movietitle">
+                  {movieDetail.fullTitle}
+                </h3>
                 {isMovieSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
@@ -149,7 +151,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
               )}
               {movieDetail.metacriticRating && (
                 <>
-                  <p className="d-inline-block ml-4">Metacritic RATING</p>
+                  <p className="d-inline-block metacritic-rating">
+                    Metacritic RATING
+                  </p>
                   <Badge variant="warning" className="mx-1">
                     {movieDetail.metacriticRating}
                   </Badge>
@@ -202,7 +206,9 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                     </div>
                   ))}
               </div>
-              <p className="mt-2">Description: {movieDetail.plot}</p>
+              <p className="mt-2 modal-desctiption">
+                Description: {movieDetail.plot}
+              </p>
             </div>
           </div>
         </Modal.Body>

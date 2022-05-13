@@ -122,13 +122,66 @@ hr {
   z-index: 50 !important;
 }
 
+.metacritic-rating {
+  margin-left: 1.5em;
+}
+
 @media screen and (max-width: 463px) {
   .movie-col {
     background-color: pink;
+  }
+
+  .modal-movietitle {
+    font-size: 1.2em;
+  }
+
+  .modal-body p,
+  .modal-body b,
+  .modal-body h6 {
+    font-size: 1em;
+  }
+
+  .heart-icon {
+    font-size: 2em;
+  }
+
+  .metacritic-rating {
+    margin-left: 0;
+  }
+
+  .modal-desctiption {
+    display: none;
+  }
+
+  .modal-image {
+    height: 200px;
+  }
+
+  .genre-div {
+    flex-direction: column;
+  }
+  .genre-div span {
+    text-align: center;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 464px) {
   .movie-col {
     background-color: grey;
+  }
+
+  .modal-movietitle {
+    font-size: 1.3em;
+  }
+
+  .heart-icon {
+    font-size: 2em;
+  }
+
+  .metacritic-rating {
+    margin-left: 0;
+  }
+
+  .modal-desctiption {
+    display: none;
   }
 }
