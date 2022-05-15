@@ -100,9 +100,21 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 alt="movie-image"
                 className="modal-image"
               />
-              <div className="d-flex justify-content-center px-2 py-2 mt-3 play-div">
-                <b className="mr-2">Watch now</b>
-                <BsPlayCircle className="play-icon" />
+              <div className="d-flex justify-content-center my-3">
+                <div className="d-flex justify-content-center mx-2 play-div">
+                  <b className="mr-2">Watch now</b>
+                  <BsPlayCircle className="play-icon" />
+                </div>
+                {isMovieSelected ? (
+                  <BsFillHeartFill
+                    className="heart-icon"
+                    onClick={handleRemoveFromFav}
+                  />
+                ) : (
+                  <>
+                    <BsHeart className="heart-icon" onClick={handleAddToFav} />
+                  </>
+                )}
               </div>
               <div className="d-flex genre-div mt-1">
                 {movieDetail.genreList &&
@@ -121,7 +133,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 <h3 className="mr-3 modal-movietitle">
                   {movieDetail.fullTitle}
                 </h3>
-                {isMovieSelected ? (
+                {/* {isMovieSelected ? (
                   <BsFillHeartFill
                     className="heart-icon"
                     onClick={handleRemoveFromFav}
@@ -130,7 +142,7 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                   <>
                     <BsHeart className="heart-icon" onClick={handleAddToFav} />
                   </>
-                )}
+                )} */}
               </div>
               {movieDetail.runtimeMins === null ? (
                 <></>

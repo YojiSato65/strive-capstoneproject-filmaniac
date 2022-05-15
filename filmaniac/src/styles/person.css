@@ -54,6 +54,12 @@
   width: 200px;
 }
 
+.personrow-heart-icon {
+  margin-top: 0.3em;
+  font-size: 1.3em;
+  color: #ffc107;
+}
+
 @media screen and (max-width: 463px) {
   .person-jumbotron {
     height: 40vh;
@@ -86,8 +92,10 @@
     min-height: 15em;
   }
 
-  .heart-icon {
-    font-size: 1.2em;
+  .personrow-heart-icon {
+    margin-top: 0.3em;
+    font-size: 1.3em;
+    color: #ffc107;
   }
   .person-search-image {
     height: 150px;
@@ -125,7 +133,9 @@
     min-height: 22em;
   }
 
-  .heart-icon {
+  .personrow-heart-icon {
+    margin-top: 0.4em;
     font-size: 1.2em;
+    color: #ffc107;
   }
 }

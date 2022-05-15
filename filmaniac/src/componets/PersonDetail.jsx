@@ -90,7 +90,7 @@ const PersonDetail = () => {
     <>
       <Container fluid className="person-detail-container">
         <Row className="jusify-conten-center align-items-center mb-3 py-4 person-detail-row">
-          <div className="d-flex align-items-center">
+          <div className="d-flex">
             <div>
               <Image
                 src={detailPerson.image}
@@ -99,7 +99,7 @@ const PersonDetail = () => {
                 className="person-image ml-4"
               />
             </div>
-            <div className="mr-5 px-4">
+            <div className="px-4 person-info-div">
               <div className="d-flex">
                 <h3 className="text-center mb-4 d-inline-block mr-3">
                   {detailPerson.name}
@@ -132,7 +132,7 @@ const PersonDetail = () => {
         <h3 className="mt-5 mb-3">Known For</h3>
         <Row>
           {detailPerson.knownFor?.map((movie) => (
-            <Col xs={6} md={3}>
+            <Col xs={6} md={3} className="known-for-col">
               <Image
                 src={movie.image}
                 rounded

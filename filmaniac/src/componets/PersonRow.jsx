@@ -102,12 +102,12 @@ const PersonRow = ({ title, people, searchPersonRowTitle }) => {
                 <h6 className="mr-2 mt-2">{person.title}</h6>
                 {isPersonSelected(person.id) ? (
                   <BsFillHeartFill
-                    className="heart-icon"
+                    className="personrow-heart-icon"
                     onClick={() => handleRemoveFromFav(person)}
                   />
                 ) : (
                   <BsHeart
-                    className="heart-icon"
+                    className="personrow-heart-icon"
                     onClick={() => handleAddToFav(person)}
                   />
                 )}

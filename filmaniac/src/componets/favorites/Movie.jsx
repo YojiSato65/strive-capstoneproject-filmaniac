@@ -31,7 +31,14 @@ const Movie = () => {
           ) : (
             <Row>
               {likedMovies.map((movie) => (
-                <Col xs={6} md={2} key={movie.id} className="movie-col mb-2">
+                <Col
+                  xs={6}
+                  md={4}
+                  lg={3}
+                  xl={2}
+                  key={movie.id}
+                  className="movie-col mb-2"
+                >
                   <Image
                     src={movie.image}
                     rounded

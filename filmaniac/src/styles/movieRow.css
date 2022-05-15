@@ -36,8 +36,8 @@
 }
 
 .heart-icon {
-  font-size: 1.2em;
-  margin-top: 0.5em;
+  font-size: 1.3em;
+  margin-top: 0.1em;
   color: #ffc107;
 }
 
@@ -59,8 +59,6 @@
   background-color: #272727;
   border-radius: 5px;
   width: 150px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .play-div:hover {
@@ -153,7 +151,7 @@ hr {
   }
 
   .heart-icon {
-    font-size: 2em;
+    font-size: 1.3em;
   }
 
   .metacritic-rating {
@@ -186,7 +184,7 @@ hr {
   }
 
   .heart-icon {
-    font-size: 2em;
+    font-size: 1.3em;
   }
 
   .metacritic-rating {

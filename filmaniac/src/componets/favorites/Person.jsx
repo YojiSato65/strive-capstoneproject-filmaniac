@@ -51,7 +51,7 @@ const Person = () => {
   return (
     <>
       <Container fluid className="px-5 liked-person-container">
-        <h3 className="mb-3">Your Favorite Crew</h3>
+        <h3 className="mb-5">Your Favorite Crew</h3>
         {!favPersonList.length ? (
           <div style={{ height: '450px', backgroundColor: '#050505' }}>
             <p className="pt-3">Hasn't been added yet.</p>
@@ -61,35 +61,35 @@ const Person = () => {
             {favPersonList.map((favPerson) => (
               <Col
                 xs={6}
-                md={2}
-                className="d-flex flex-column m-3"
+                md={4}
+                lg={3}
+                xl={2}
+                className="d-flex flex-column align-items-center person-col"
                 key={favPerson?.id}
               >
                 <Link to={'/' + favPerson?.id}>
                   <Image
                     src={favPerson?.image}
                     roundedCircle
-                    width="200"
-                    height="200"
                     alt="movie-image"
-                    className="fav-person-image"
+                    className="person-search-image mb-4"
                     onClick={() => dispatch(personSelectAction(favPerson))}
                   />
                 </Link>
-                <div>
-                  <h5 className="text-center mt-3 d-inline-block mr-2">
+                <div className="d-flex justify-content-center search-result-person-row">
+                  <h6 className="mr-2 mt-2">
                     {favPerson?.title || favPerson?.name}
-                  </h5>
+                  </h6>
                   <BsFillHeartFill
-                    className="heart-icon"
+                    className="personrow-heart-icon"
                     onClick={() => handleRemoveFromFav(favPerson)}
                   />
-                  <p>
-                    {favPerson.description
-                      ? setRoleFromRow(favPerson?.description)
-                      : favPerson.role}
-                  </p>
                 </div>
+                <p>
+                  {favPerson.description
+                    ? setRoleFromRow(favPerson?.description)
+                    : favPerson.role}
+                </p>
               </Col>
             ))}
           </Row>
