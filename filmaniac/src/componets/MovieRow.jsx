@@ -50,7 +50,9 @@ const MovieRow = ({ title, movies, searchResult, isLoading }) => {
           </Row>
         </Container>
       ) : (
-        <>{/* <Spinner animation="grow" /> */}</>
+        <div className="spinner-div d-flex justify-content-center pt-5">
+          <Spinner animation="grow" variant="warning" />
+        </div>
       )}
 
       <MyModal

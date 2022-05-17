@@ -5,6 +5,11 @@
   padding-right: 3em;
 }
 
+.movie-container {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
 .movie-col {
   padding-left: 10px;
   padding-right: 10px;
@@ -35,7 +40,7 @@
   color: rgb(239, 239, 239);
 }
 
-.heart-icon {
+.modal-heart-icon {
   font-size: 1.3em;
   margin-top: 0.1em;
   color: #ffc107;
@@ -109,11 +114,15 @@ hr {
   width: 100%;
   display: flex;
   justify-content: center;
-  /* padding-top: 3em; */
 }
 .sk-spinner div {
   width: 30px !important;
   height: 30px !important;
+}
+
+.spinner-grow {
+  width: 50px;
+  height: 50px;
 }
 
 .modal-actor-image {
@@ -134,6 +143,10 @@ hr {
   margin-left: -15px;
 }
 
+.spinner-div {
+  background-color: #050505;
+}
+
 @media screen and (max-width: 463px) {
   .movie-col {
     padding-left: 5px;
@@ -150,7 +163,7 @@ hr {
     font-size: 1em;
   }
 
-  .heart-icon {
+  .modal-heart-icon {
     font-size: 1.3em;
   }
 
@@ -172,6 +185,11 @@ hr {
   .genre-div span {
     text-align: center;
   }
+
+  .movie-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
 }
 @media screen and (max-width: 1024px) and (min-width: 464px) {
   .movie-col {
@@ -183,7 +201,7 @@ hr {
     font-size: 1.3em;
   }
 
-  .heart-icon {
+  .modal-heart-icon {
     font-size: 1.3em;
   }
 
@@ -193,5 +211,10 @@ hr {
 
   .modal-desctiption {
     display: none;
+  }
+
+  .movie-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
 }

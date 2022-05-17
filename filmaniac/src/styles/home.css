@@ -45,8 +45,9 @@
 
 @media screen and (max-width: 463px) {
   .home-jumbotron {
-    height: 40vh;
+    height: 30vh;
     position: unset;
+    padding-top: 6em;
   }
 
   .home-jumbotron::before {

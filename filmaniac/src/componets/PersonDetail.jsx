@@ -106,12 +106,12 @@ const PersonDetail = () => {
                 </h3>
                 {isPersonSelected ? (
                   <BsFillHeartFill
-                    className="heart-icon"
+                    className="person-heart-icon"
                     onClick={() => handleRemoveFromFav(detailPerson)}
                   />
                 ) : (
                   <BsHeart
-                    className="heart-icon"
+                    className="person-heart-icon"
                     onClick={() => handleAddToFav(detailPerson)}
                   />
                 )}

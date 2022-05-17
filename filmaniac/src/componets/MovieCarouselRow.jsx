@@ -47,7 +47,7 @@ const MovieCarouselRow = ({ title, nestedMovies, searchResult, isLoading }) => {
           <Spinner animation="grow" />
         </>
       ) : (
-        <Container fluid className="pb-5">
+        <Container fluid className="movie-container">
           {!searchResult ? (
             <h3 className="mb-3 ml-1">{title}</h3>
           ) : (

@@ -107,12 +107,15 @@ const MyModal = ({ handleClickImage, show, handleClose, handleShow }) => {
                 </div>
                 {isMovieSelected ? (
                   <BsFillHeartFill
-                    className="heart-icon"
+                    className="modal-heart-icon"
                     onClick={handleRemoveFromFav}
                   />
                 ) : (
                   <>
-                    <BsHeart className="heart-icon" onClick={handleAddToFav} />
+                    <BsHeart
+                      className="modal-heart-icon"
+                      onClick={handleAddToFav}
+                    />
                   </>
                 )}
               </div>

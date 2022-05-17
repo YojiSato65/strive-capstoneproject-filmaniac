@@ -32,5 +32,11 @@
 @media screen and (max-width: 1024px) and (min-width: 464px) {
   .footer-container {
     padding-top: 5em;
+    padding-bottom: 25vh;
+  }
+
+  .footer-row1,
+  .footer-row2 {
+    justify-content: end;
   }
 }
